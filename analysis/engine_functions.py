@@ -1,7 +1,7 @@
 '''Store of common functions found across the different programmes'''
 
-'''Function to filter out ALL milestone data'''
 def all_milestone_data_bulk(project_list, master_data):
+    """Function to filter out ALL milestone data"""
     upper_dict = {}
 
     for name in project_list:
@@ -38,8 +38,8 @@ def all_milestone_data_bulk(project_list, master_data):
 
     return upper_dict
 
-'''Function to filter out approval and project delivery milestones'''
 def ap_p_milestone_data_bulk(project_list, master_data):
+    """Function to filter out approval and project delivery milestones"""
     upper_dict = {}
 
     for name in project_list:
@@ -71,8 +71,8 @@ def ap_p_milestone_data_bulk(project_list, master_data):
 
     return upper_dict
 
-'''Function to filter out assurance milestone data'''
 def assurance_milestone_data_bulk(project_list, master_data):
+    """Function to filter out assurance milestone data"""
     upper_dict = {}
 
     for name in project_list:
@@ -89,8 +89,8 @@ def assurance_milestone_data_bulk(project_list, master_data):
 
     return upper_dict
 
-'''Function that calculates time different between milestone dates'''
 def project_time_difference(proj_m_data_1, proj_m_data_2, date_of_interest):
+    """Function that calculates time different between milestone dates"""
     upper_dict = {}
 
     for proj_name in proj_m_data_1:
@@ -116,8 +116,8 @@ def project_time_difference(proj_m_data_1, proj_m_data_2, date_of_interest):
 
     return upper_dict
 
-'''both below functions are in development'''
 def filter_group(dictionary, group_of_interest):
+    """both below functions are in development"""
     project_list = []
     for project in dictionary:
         if dictionary[project]['DfT Group'] == group_of_interest:
@@ -134,13 +134,13 @@ def filter_gmpp(dictionary):
     return project_list
 
 
-''' One of key functions used for calculating which quarter to baseline data from...
-Function returns a dictionary structured in the following way project name[('latest quarter info', 'latest bc'), 
-('last quarter info', 'last bc'), ('last baseline quarter info', 'last baseline bc'), ('oldest quarter info', 
-'oldest bc')] depending on the amount information available in the data. Only the first three key values are returned, 
-to ensure consistency (which is helpful later).'''
 def bc_ref_stages(proj_list, q_masters_dict_list):
-
+    """One of key functions used for calculating which quarter to baseline data from...
+    Function returns a dictionary structured in the following way project name[('latest quarter info', 'latest bc'),
+    ('last quarter info', 'last bc'), ('last baseline quarter info', 'last baseline bc'), ('oldest quarter info',
+    'oldest bc')] depending on the amount information available in the data. Only the first three key values are returned,
+    to ensure consistency (which is helpful later).
+    """
     output_dict = {}
 
     for name in proj_list:
@@ -160,7 +160,7 @@ def bc_ref_stages(proj_list, q_masters_dict_list):
         for i in range(0, len(all_list)):
             bl_list.append(all_list[i][1])
 
-        '''below lines of text from stackoverflow. Question, remove duplicates in python list while 
+        '''below lines of text from stackoverflow. Question, remove duplicates in python list while
         preserving order'''
         seen = set()
         seen_add = seen.add
@@ -180,16 +180,16 @@ def bc_ref_stages(proj_list, q_masters_dict_list):
                 if all_list[i][1] == bl_list[0]:
                     ref_list.insert(2, all_list[i])
 
-        '''there is a hack here i.e. returning only first three in ref_list. There's a bug which I don't fully 
+        '''there is a hack here i.e. returning only first three in ref_list. There's a bug which I don't fully
         understand, but this solution is hopefully good enough for now'''
         output_dict[name] = ref_list[0:3]
 
     return output_dict
 
-'''Another key function used for calcualting which quarter to baseline data from...
-Fuction returns a dictionary structured in the following way project_name[n,n,n]. The n (number) values denote where 
-the relevant quarter master dictionary is positions in the list of master dictionaries'''
 def get_master_baseline_dict(proj_list, q_masters_dict_list, baseline_dict_list):
+    """Another key function used for calcualting which quarter to baseline data from...
+    Fuction returns a dictionary structured in the following way project_name[n,n,n]. The n (number) values denote where
+    the relevant quarter master dictionary is positions in the list of master dictionaries"""
     output_dict = {}
 
     for name in proj_list:
