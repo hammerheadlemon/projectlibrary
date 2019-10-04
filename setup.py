@@ -6,6 +6,6 @@ setup(name="projectlibrary",
       author="Mr Grant",
       install_requires=[
           'datamaps @ https://github.com/hammerheadlemon/datamaps/archive/master.zip#egg=datamaps'
-      ]
+      ],
       packages=find_packages()
       )
