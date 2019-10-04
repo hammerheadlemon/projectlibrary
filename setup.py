@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(name="projectlibrary",
       version="0.1",
@@ -7,5 +7,5 @@ setup(name="projectlibrary",
       install_requires=[
           'datamaps @ https://github.com/hammerheadlemon/datamaps/archive/master.zip#egg=datamaps'
       ]
-      packages=['analysis']
+      packages=find_packages()
       )
