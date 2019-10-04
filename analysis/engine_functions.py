@@ -150,8 +150,8 @@ def bc_ref_stages(proj_list, q_masters_dict_list):
         ref_list = []       # format as for all list but only contains the three tuples of interest
         for master in q_masters_dict_list:
             try:
-                bc_stage = master[name]['BICC approval point']
-                quarter = master[name]['Reporting period (GMPP - Snapshot Date)']
+                bc_stage = master.data[name]['BICC approval point']
+                quarter = master.data[name]['Reporting period (GMPP - Snapshot Date)']
                 tuple = (quarter, bc_stage)
                 all_list.append(tuple)
             except KeyError:
