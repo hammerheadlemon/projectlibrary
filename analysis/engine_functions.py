@@ -6,7 +6,7 @@ def all_milestone_data_bulk(project_list, master_data):
 
     for name in project_list:
         try:
-            p_data = master_data[name]
+            p_data = master_data.data[name]
             lower_dict = {}
             for i in range(1, 50):
                 try:
@@ -44,7 +44,7 @@ def ap_p_milestone_data_bulk(project_list, master_data):
 
     for name in project_list:
         try:
-            p_data = master_data[name]
+            p_data = master_data.data[name]
             lower_dict = {}
             for i in range(1, 50):
                 try:
@@ -77,7 +77,7 @@ def assurance_milestone_data_bulk(project_list, master_data):
 
     for name in project_list:
         try:
-            p_data = master_data[name]
+            p_data = master_data.data[name]
             lower_dict = {}
             for i in range(1, 50):
                 lower_dict[p_data['Assurance MM' + str(i)]] = \
