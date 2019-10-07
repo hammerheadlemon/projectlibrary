@@ -16,8 +16,8 @@ q3_1617 = project_data_from_master('C:\\Users\\Standalone\\general\\masters fold
 
 
 """list of dictionaries"""
-one_quarter_dict_list = [q1_1920]
-bespoke_group_dict_list = [q1_1920, q4_1819]
-list_of_dicts_all = [q1_1920, q4_1819, q3_1819, q2_1819, q1_1819, q4_1718, q3_1718, q2_1718, q1_1718, q4_1617, q3_1617]
+one_quarter_master_list = [q1_1920]
+bespoke_group_master_list = [q1_1920, q4_1819]
+list_of_master_all = [q1_1920, q4_1819, q3_1819, q2_1819, q1_1819, q4_1718, q3_1718, q2_1718, q1_1718, q4_1617, q3_1617]
 
 
