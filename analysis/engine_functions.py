@@ -230,3 +230,5 @@ def convert_rag_text(dca_rating):
         return 'A/R'
     elif dca_rating == 'Red':
         return 'R'
+    else:
+        return 'None'
