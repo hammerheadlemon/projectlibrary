@@ -133,7 +133,6 @@ def filter_gmpp(dictionary):
 
     return project_list
 
-
 def bc_ref_stages(proj_list, q_masters_dict_list):
     """One of key functions used for calculating which quarter to baseline data from...
     Function returns a dictionary structured in the following way project name[('latest quarter info', 'latest bc'),
@@ -206,3 +205,16 @@ def get_master_baseline_dict(proj_list, q_masters_dict_list, baseline_dict_list)
         output_dict[name] = master_q_list
 
     return output_dict
+
+def convert_rag_text(dca_rating):
+
+    if dca_rating == 'Green':
+        return 'G'
+    elif dca_rating == 'Amber/Green':
+        return 'A/G'
+    elif dca_rating == 'Amber':
+        return 'A'
+    elif dca_rating == 'Amber/Red':
+        return 'A/R'
+    elif dca_rating == 'Red':
+        return 'R'
