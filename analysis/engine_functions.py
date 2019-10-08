@@ -133,24 +133,29 @@ def filter_gmpp(dictionary):
 
     return project_list
 
-def bc_ref_stages(proj_list, q_masters_dict_list):
-    """One of key functions used for calculating which quarter to baseline data from...
+def bc_ref_stages(project_list, masters_list):
+    """One of key functions used for calculating which quarter to baseline data from.
+
     Function returns a dictionary structured in the following way project name[('latest quarter info', 'latest bc'),
     ('last quarter info', 'last bc'), ('last baseline quarter info', 'last baseline bc'), ('oldest quarter info',
     'oldest bc')] depending on the amount information available in the data. Only the first three key values are returned,
     to ensure consistency (which is helpful later).
+
+    project_list: list of project names
+    masters_list = list of master dictionaries
+
     """
     output_dict = {}
 
-    for name in proj_list:
+    for project_name in project_list:
         #print(name)
         all_list = []      # format [('quarter info': 'bc')] across all masters including project
         bl_list = []        # format ['bc', 'bc'] across all masters. bl_list_2 removes duplicates
         ref_list = []       # format as for all list but only contains the three tuples of interest
-        for master in q_masters_dict_list:
+        for master in masters_list:
             try:
-                bc_stage = master.data[name]['BICC approval point']
-                quarter = master.data[name]['Reporting period (GMPP - Snapshot Date)']
+                bc_stage = master.data[project_name]['BICC approval point']
+                quarter = master.data[project_name]['Reporting period (GMPP - Snapshot Date)']
                 tuple = (quarter, bc_stage)
                 all_list.append(tuple)
             except KeyError:
@@ -181,7 +186,7 @@ def bc_ref_stages(proj_list, q_masters_dict_list):
 
         '''there is a hack here i.e. returning only first three in ref_list. There's a bug which I don't fully
         understand, but this solution is hopefully good enough for now'''
-        output_dict[name] = ref_list[0:3]
+        output_dict[project_name] = ref_list[0:3]
 
     return output_dict
 
