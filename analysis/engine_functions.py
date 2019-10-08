@@ -190,7 +190,7 @@ def bc_ref_stages(project_list, masters_list):
 
     return output
 
-def get_master_baseline_dict(project_list, masters_list, baselines_list):
+def get_master_baseline(project_list, masters_list, baselines_list):
     """
     Another key function used for calcualting which quarter to baseline data from.
 
