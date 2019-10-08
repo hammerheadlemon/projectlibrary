@@ -145,7 +145,7 @@ def bc_ref_stages(project_list, masters_list):
     masters_list = list of master dictionaries
 
     """
-    output_dict = {}
+    output = {}
 
     for project_name in project_list:
         #print(name)
@@ -186,30 +186,37 @@ def bc_ref_stages(project_list, masters_list):
 
         '''there is a hack here i.e. returning only first three in ref_list. There's a bug which I don't fully
         understand, but this solution is hopefully good enough for now'''
-        output_dict[project_name] = ref_list[0:3]
+        output[project_name] = ref_list[0:3]
 
-    return output_dict
+    return output
 
-def get_master_baseline_dict(proj_list, q_masters_dict_list, baseline_dict_list):
-    """Another key function used for calcualting which quarter to baseline data from...
+def get_master_baseline_dict(project_list, masters_list, baselines_list):
+    """
+    Another key function used for calcualting which quarter to baseline data from.
+
     Fuction returns a dictionary structured in the following way project_name[n,n,n]. The n (number) values denote where
-    the relevant quarter master dictionary is positions in the list of master dictionaries"""
-    output_dict = {}
+    the relevant quarter master dictionary is positions in the list of master dictionaries
 
-    for name in proj_list:
+    project_list: list of projects
+    masters_list: list of masters
+    baseline_list: list of project baseline information in the structure created by bc_ref_stage
+    """
+    output = {}
+
+    for project_name in project_list:
         master_q_list = []
-        for key in baseline_dict_list[name]:
-            for x, master in enumerate(q_masters_dict_list):
+        for key in baselines_list[project_name]:
+            for x, master in enumerate(masters_list):
                 try:
-                    quarter = master[name]['Reporting period (GMPP - Snapshot Date)']
+                    quarter = master.data[project_name]['Reporting period (GMPP - Snapshot Date)']
                     if quarter == key[0]:
                         master_q_list.append(x)
                 except KeyError:
                     pass
 
-        output_dict[name] = master_q_list
+        output[project_name] = master_q_list
 
-    return output_dict
+    return output
 
 def convert_rag_text(dca_rating):
 
