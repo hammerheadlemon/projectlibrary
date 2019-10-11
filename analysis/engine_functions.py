@@ -39,9 +39,9 @@ def all_milestone_data_bulk(project_list, master_data):
                 except KeyError:
                     pass
         except KeyError:
-            lower_dict = {}
+            lower_dictionary = {}
 
-        upper_dictionary[name] = lower_dict
+        upper_dictionary[name] = lower_dictionary
 
     return upper_dictionary
 
