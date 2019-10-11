@@ -4,6 +4,8 @@ Store of common functions found in all analysis engine
 
 '''
 
+import random
+
 def all_milestone_data_bulk(project_list, master_data):
     '''
     function that filters all milestone data and returns it in dictionary format.
@@ -60,19 +62,19 @@ def ap_p_milestone_data_bulk(project_list, master_data):
     master_data: quarter master data set
     '''
 
-    upper_dict = {}
+    upper_dictionary = {}
 
     for name in project_list:
         try:
             p_data = master_data.data[name]
-            lower_dict = {}
+            lower_dictionary = {}
             for i in range(1, 50):
                 try:
                     try:
-                        lower_dict[p_data['Approval MM' + str(i)]] = \
+                        lower_dictionary[p_data['Approval MM' + str(i)]] = \
                             {p_data['Approval MM' + str(i) + ' Forecast / Actual'] : p_data['Approval MM' + str(i) + ' Notes']}
                     except KeyError:
-                        lower_dict[p_data['Approval MM' + str(i)]] = \
+                        lower_dictionary[p_data['Approval MM' + str(i)]] = \
                             {p_data['Approval MM' + str(i) + ' Forecast - Actual'] : p_data['Approval MM' + str(i) + ' Notes']}
 
                 except KeyError:
@@ -80,38 +82,38 @@ def ap_p_milestone_data_bulk(project_list, master_data):
 
             for i in range(18, 67):
                 try:
-                    lower_dict[p_data['Project MM' + str(i)]] = \
+                    lower_dictionary[p_data['Project MM' + str(i)]] = \
                         {p_data['Project MM' + str(i) + ' Forecast - Actual'] : p_data['Project MM' + str(i) + ' Notes']}
                 except KeyError:
                     pass
         except KeyError:
-            lower_dict = {}
+            lower_dictionary = {}
 
-        upper_dict[name] = lower_dict
+        upper_dictionary[name] = lower_dictionary
 
-    return upper_dict
+    return upper_dictionary
 
 def assurance_milestone_data_bulk(project_list, master_data):
     """Function to filter out assurance milestone data"""
-    upper_dict = {}
+    upper_dictionary = {}
 
     for name in project_list:
         try:
             p_data = master_data.data[name]
-            lower_dict = {}
+            lower_dictionary = {}
             for i in range(1, 50):
-                lower_dict[p_data['Assurance MM' + str(i)]] = \
+                lower_dictionary[p_data['Assurance MM' + str(i)]] = \
                     {p_data['Assurance MM' + str(i) + ' Forecast - Actual']: p_data['Assurance MM' + str(i) + ' Notes']}
 
-            upper_dict[name] = lower_dict
+            upper_dictionary[name] = lower_dictionary
         except KeyError:
-            upper_dict[name] = {}
+            upper_dictionary[name] = {}
 
-    return upper_dict
+    return upper_dictionary
 
 def project_time_difference(proj_m_data_1, proj_m_data_2, date_of_interest):
     """Function that calculates time different between milestone dates"""
-    upper_dict = {}
+    upper_dictionary = {}
 
     for proj_name in proj_m_data_1:
         td_dict = {}
@@ -132,9 +134,9 @@ def project_time_difference(proj_m_data_1, proj_m_data_2, date_of_interest):
                 except (KeyError, TypeError):
                     td_dict[milestone] = 'No date provided' # date has now been removed
 
-        upper_dict[proj_name] = td_dict
+        upper_dictionary[proj_name] = td_dict
 
-    return upper_dict
+    return upper_dictionary
 
 def filter_gmpp(dictionary):
     project_list = []
@@ -266,5 +268,37 @@ def filter_project_group(master_data, group):
             output_list.append(project_name)
         else:
             pass
+
+    return output_list
+
+def get_all_project_names(masters_list):
+    '''
+    function returns list of all projects across multiple dictionaries
+
+    useful if you need project names across multiple quarters
+
+    masters_list: list of masters containing quarter information
+    '''
+
+    output_list = []
+    for master in masters_list:
+        for name in master.projects:
+            if name not in output_list:
+                output_list.append(name)
+
+    return output_list
+
+def get_quarter_stamp(masters_list):
+    '''
+    Function used to specify the quarter being reported.
+
+    masters_list: list of masters containing quarter information
+    '''
+
+    output_list = []
+    for master in masters_list:
+        project_name = random.choice(master.projects)
+        quarter_stamp = master.data[project_name]['Reporting period (GMPP - Snapshot Date)']
+        output_list.append(quarter_stamp)
 
     return output_list
