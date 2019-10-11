@@ -1,14 +1,19 @@
-'''Store of common functions found across the different programmes'''
+'''
+
+Store of common functions found in all analysis engine
+
+'''
 
 def all_milestone_data_bulk(project_list, master_data):
-    """
+    '''
     function that filters all milestone data and returns it in dictionary format.
 
     dictionary is structured as {'project name': {'milestone name': datetime.date: 'notes'}}
 
     project list: list of project names of interest / in range
     master_data: quarter master data set
-    """
+    '''
+
     upper_dictionary = {}
 
     for name in project_list:
@@ -46,7 +51,15 @@ def all_milestone_data_bulk(project_list, master_data):
     return upper_dictionary
 
 def ap_p_milestone_data_bulk(project_list, master_data):
-    """Function to filter out approval and project delivery milestones"""
+    '''
+    function that filters  milestone data and returns it in dictionary format.
+
+    dictionary is structured as {'project name': {'milestone name': datetime.date: 'notes'}}
+
+    project list: list of project names of interest / in range
+    master_data: quarter master data set
+    '''
+
     upper_dict = {}
 
     for name in project_list:
@@ -122,15 +135,6 @@ def project_time_difference(proj_m_data_1, proj_m_data_2, date_of_interest):
         upper_dict[proj_name] = td_dict
 
     return upper_dict
-
-def filter_group(dictionary, group_of_interest):
-    """both below functions are in development"""
-    project_list = []
-    for project in dictionary:
-        if dictionary[project]['DfT Group'] == group_of_interest:
-            project_list.append(project)
-
-    return project_list
 
 def filter_gmpp(dictionary):
     project_list = []
