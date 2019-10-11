@@ -138,11 +138,11 @@ def project_time_difference(proj_m_data_1, proj_m_data_2, date_of_interest):
 
     return upper_dictionary
 
-def filter_gmpp(dictionary):
+def filter_gmpp(master):
     project_list = []
-    for project in dictionary:
-        if dictionary[project]['GMPP - IPA ID Number'] is not None:
-            project_list.append(project)
+    for project_name in master.projects:
+        if master.data[project_name]['GMPP - IPA ID Number'] is not None:
+            project_list.append(project_name)
 
     return project_list
 
