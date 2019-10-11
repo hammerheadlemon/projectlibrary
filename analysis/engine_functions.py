@@ -197,16 +197,19 @@ def bc_ref_stages(project_list, masters_list):
 
     return output
 
-def get_master_baseline(project_list, masters_list, baselines_list):
+def master_baseline_index(project_list, masters_list, baselines_list):
     """
-    Another key function used for calcualting which quarter to baseline data from.
+    Another key function to calculate which quarter to baseline data from.
 
-    Fuction returns a dictionary structured in the following way project_name[n,n,n]. The n (number) values denote where
-    the relevant quarter master dictionary is positions in the list of master dictionaries
+    Function returns a dictionary structured as {'project name': [n,n,n]}.
+    The n (number) values denote where the relevant baseline master dictionaries are list of master dictionaries.
+    The first n in the latest master, second n is last master, third n is baseline master.
 
     project_list: list of projects
     masters_list: list of masters
-    baseline_list: list of project baseline information in the structure created by bc_ref_stage
+    baseline_list: list of project baseline information in the structure {'project name': [('quarter stamp', 'bc stage),
+    (), ()] as created by bc_ref_stage function.
+
     """
     output = {}
 
