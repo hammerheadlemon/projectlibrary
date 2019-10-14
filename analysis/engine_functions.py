@@ -2,9 +2,15 @@
 
 Store of common functions found in all analysis engine
 
+This is also where the date of BICC is set. This is the date from which much of the analysis is set.
+NOTE. Python date format is (YYYY,MM,DD)
+
 '''
 
 import random
+import datetime
+
+bicc_date = datetime.datetime(2019, 11, 4)
 
 def all_milestone_data_bulk(project_list, master_data):
     '''
