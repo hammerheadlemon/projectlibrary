@@ -117,7 +117,7 @@ def assurance_milestone_data_bulk(project_list, master_data):
 
     return upper_dictionary
 
-def project_time_difference(proj_m_data_1, proj_m_data_2, date_of_interest):
+def project_time_difference(proj_m_data_1, proj_m_data_2):
     """Function that calculates time different between milestone dates"""
     upper_dictionary = {}
 
@@ -127,7 +127,7 @@ def project_time_difference(proj_m_data_1, proj_m_data_2, date_of_interest):
             if milestone is not None:
                 milestone_date = tuple(proj_m_data_1[proj_name][milestone])[0]
                 try:
-                    if date_of_interest <= milestone_date:
+                    if bicc_date <= milestone_date:
                         try:
                             old_milestone_date = tuple(proj_m_data_2[proj_name][milestone])[0]
                             time_delta = (milestone_date - old_milestone_date).days  # time_delta calculated here
