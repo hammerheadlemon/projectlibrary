@@ -315,9 +315,9 @@ def concatenate_dates(date):
     :param date:
     :return:
     '''
-    today = bicc_date
+    #today = bicc_date
     if date != None:
-        a = (date - today.date()).days
+        a = (date - bicc_date).days
         year = 365
         month = 30
         fortnight = 14
@@ -381,16 +381,16 @@ def concatenate_dates(date):
             elif 14 <= a <= 20:
                 return ('2 weeks')
             elif 20 <= a <= 60:
-                if today.month == date.month:
+                if bicc_date.month == date.month:
                     return ('Later this mth')
-                elif (date.month - today.month) == 1:
+                elif (date.month - bicc_date.month) == 1:
                     return ('Next mth')
                 else:
                     return ('2 mths')
             elif -60 <= a <= -15:
-                if today.month == date.month:
+                if bicc_date.month == date.month:
                     return ('Earlier this mth')
-                elif (date.month - today.month) == -1:
+                elif (date.month - bicc_date.month) == -1:
                     return ('Last mth')
                 else:
                     return ('-2 mths')
