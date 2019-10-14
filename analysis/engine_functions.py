@@ -312,10 +312,9 @@ def get_quarter_stamp(masters_list):
 def concatenate_dates(date):
     '''
     function for converting dates into concatenated written time periods
-    :param date:
-    :return:
+    :param date: datetime.date
+    :return: concatenated date
     '''
-    #today = bicc_date
     if date != None:
         a = (date - bicc_date).days
         year = 365
