@@ -15,7 +15,7 @@ q1_1718 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\m
 q4_1617 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_4_2016.xlsx', 4, 2016)
 q3_1617 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_3_2016.xlsx', 3, 2016)
 
-gmpp_master = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\q1_1920_gmpp_data.xlsx', 1, 2019)
+#gmpp_master = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\q1_1920_gmpp_data.xlsx', 1, 2019)
 
 """list of dictionaries"""
 one_quarter_master_list = [q1_1920]
