@@ -125,7 +125,7 @@ def project_time_difference(proj_m_data_1, proj_m_data_2):
         td_dict = {}
         for milestone in proj_m_data_1[proj_name]:
             if milestone is not None:
-                milestone_date = tuple(proj_m_data_1[proj_name][milestone])[0]
+                milestone_date = tuple(proj_m_data_1[proj_name][milestone])[0].date()
                 try:
                     if bicc_date <= milestone_date:
                         try:
@@ -315,6 +315,7 @@ def concatenate_dates(date):
     :param date: datetime.date
     :return: concatenated date
     '''
+    date = date.date()
     if date != None:
         a = (date - bicc_date).days
         year = 365
