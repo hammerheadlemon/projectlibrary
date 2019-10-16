@@ -2,7 +2,7 @@
 
 from datamaps.api import project_data_from_master
 
-q2_1920 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_2_2019_testing.xlsx', 2, 2019)
+q2_1920 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_2_2019.xlsx', 2, 2019)
 q1_1920 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_1_2019.xlsx', 1, 2019)
 q4_1819 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_4_2018.xlsx', 4, 2018)
 q3_1819 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_3_2018.xlsx', 3, 2018)
