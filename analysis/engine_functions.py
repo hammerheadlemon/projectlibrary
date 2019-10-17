@@ -315,7 +315,6 @@ def concatenate_dates(date):
     :param date: datetime.date
     :return: concatenated date
     '''
-    date = date.date()
     if date != None:
         a = (date - bicc_date).days
         year = 365
