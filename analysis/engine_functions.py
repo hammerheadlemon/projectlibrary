@@ -167,7 +167,7 @@ def bc_ref_stages(project_list, masters_list):
     output = {}
 
     for project_name in project_list:
-        #print(name)
+        print(name)
         all_list = []      # format [('quarter info': 'bc')] across all masters including project
         bl_list = []        # format ['bc', 'bc'] across all masters. bl_list_2 removes duplicates
         ref_list = []       # format as for all list but only contains the three tuples of interest
