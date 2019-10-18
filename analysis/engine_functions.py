@@ -125,7 +125,7 @@ def project_time_difference(proj_m_data_1, proj_m_data_2):
         td_dict = {}
         for milestone in proj_m_data_1[proj_name]:
             if milestone is not None:
-                milestone_date = tuple(proj_m_data_1[proj_name][milestone])[0].date()
+                milestone_date = tuple(proj_m_data_1[proj_name][milestone])[0]
                 try:
                     if bicc_date <= milestone_date:
                         try:
