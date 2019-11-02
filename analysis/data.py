@@ -24,4 +24,8 @@ financial_analysis_masters_list = [q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, 
 list_of_masters_all = [q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819, q4_1718, q3_1718, q2_1718, q1_1718,
                        q4_1617, q3_1617]
 
+'''list of project names. useful to have here and import into programme'''
+all_project_names = q2_1920.projects
 
+'''specific project names. useful to have them captured here so don't have to keep cutting and pasting string 
+name from excel master'''
