@@ -40,6 +40,12 @@ cost_list = [' RDEL Forecast Total', ' CDEL Forecast Total', ' Forecast Non-Gov'
 year_interest_list = ['19-20', '20-21', '21-22', '22-23', '23-24', '24-25', '25-26', '26-27', '27-28', '28-29'] # comparing_costs
 wlc_key = 'Total Forecast' # comparing costs
 
+
+financial_narrative_keys = ['Project Costs Narrative',   # financial_dca_dashboard
+                 'Cost comparison with last quarters cost narrative',
+                 'Cost comparison within this quarters cost narrative']
+
+
 '''specific project names. Useful to have them captured here so don't have to keep cutting and pasting string 
 name from excel master'''
 a12 = 'A12 Chelmsford to A120 widening'
