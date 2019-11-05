@@ -45,6 +45,8 @@ financial_narrative_keys = ['Project Costs Narrative',   # financial_dca_dashboa
                  'Cost comparison with last quarters cost narrative',
                  'Cost comparison within this quarters cost narrative']
 
+schedule_narrative = ['Milestone Commentary']  # schedule_dca_dashboard
+
 
 '''specific project names. Useful to have them captured here so don't have to keep cutting and pasting string 
 name from excel master'''
