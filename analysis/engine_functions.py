@@ -452,8 +452,8 @@ def up_or_down(latest_dca, last_dca):
 def convert_bc_stage_text(bc_stage):
     '''
     function that converts bc stage.
-    :param bc_stage:
-    :return:
+    :param bc_stage: the string name for business cases that it kept in the master
+    :return: standard/shorter string name
     '''
 
     if bc_stage == 'Strategic Outline Case':
@@ -466,3 +466,17 @@ def convert_bc_stage_text(bc_stage):
         return 'pre-SOBC'
     else:
         return bc_stage
+
+def combine_narrtives(project_name, master_data, key_list):
+    '''
+    Function that combines narratives across keys
+    :param project_name: project name
+    :param master_data: master data from one quarter
+    :param key_list: list of keys that contain the narrative (values) to be combined.
+    :return: combined narrative
+    '''
+    output = ''
+    for key in key_list:
+        output = output + str(master_data[project_name][key])
+
+    return output
