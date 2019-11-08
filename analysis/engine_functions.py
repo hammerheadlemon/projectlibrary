@@ -58,6 +58,42 @@ def all_milestone_data_bulk(project_list, master_data):
 
     return upper_dictionary
 
+def approval_milestone_data_bulk(project_list, master_data):
+    '''
+    function that filters all milestone data and returns it in dictionary format.
+
+    dictionary is structured as {'project name': {'milestone name': datetime.date: 'notes'}}
+
+    project list: list of project names of interest / in range
+    master_data: quarter master data set
+    '''
+
+    upper_dictionary = {}
+
+    for name in project_list:
+        try:
+            p_data = master_data.data[name]
+            lower_dictionary = {}
+            for i in range(1, 50):
+                try:
+                    try:
+                        lower_dictionary[p_data['Approval MM' + str(i)]] = \
+                            {p_data['Approval MM' + str(i) + ' Forecast / Actual']: p_data[
+                                'Approval MM' + str(i) + ' Notes']}
+                    except KeyError:
+                        lower_dictionary[p_data['Approval MM' + str(i)]] = \
+                            {p_data['Approval MM' + str(i) + ' Forecast - Actual']: p_data[
+                                'Approval MM' + str(i) + ' Notes']}
+                except KeyError:
+                    pass
+
+        except KeyError:
+            lower_dictionary = {}
+
+        upper_dictionary[name] = lower_dictionary
+
+    return upper_dictionary
+
 def ap_p_milestone_data_bulk(project_list, master_data):
     '''
     function that filters  milestone data and returns it in dictionary format.
