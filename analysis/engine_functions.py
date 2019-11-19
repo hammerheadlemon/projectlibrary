@@ -516,3 +516,172 @@ def combine_narrtives(project_name, master_data, key_list):
         output = output + str(master_data[project_name][key])
 
     return output
+
+def baseline_information_bc(project_list, masters_list):
+    '''
+    Function that calculates when project business case of have changes. Only returns where there have been changes.
+    :param project_list: list of project names
+    :param masters_list: list of masters with quarter information
+    :return: python dictionary in format 'project name':('BC', 'Quarter Stamp', index position in masters_list)
+    '''
+    output = {}
+
+    for project_name in project_list:
+        lower_list = []
+        for i, master in enumerate(masters_list):
+            if project_name in master.projects:
+                approved_bc = master.data[project_name]['BICC approval point']
+                quarter = master.data[project_name]['Reporting period (GMPP - Snapshot Date)']
+                try:
+                    previous_approved_bc = masters_list[i+1].data[project_name]['BICC approval point']
+                    if approved_bc != previous_approved_bc:
+                        lower_list.append((approved_bc, quarter, i))
+                except IndexError:
+                    # this captures the last available quarter data if project was in portfolio from beginning
+                    lower_list.append((approved_bc, quarter, i))
+                except KeyError:
+                    # this captures the first quarter the project reported if not in portfolio from beginning
+                    lower_list.append((approved_bc, quarter, i))
+
+        output[project_name] = lower_list
+
+    return output
+
+def baseline_information(project_list, masters_list, data_baseline):
+    '''
+    Function that calculates in information within masters has been baselined
+    :param project_list: list of project names
+    :param masters_list: list of quarter masters.
+    :param data_baseline: type of information to check for baselines. options are: 'ALB milestones' etc
+    :return: python dictionary structured as 'project name': ('yes (if reported that quarter), 'quarter stamp',
+    index position of master in master quarter list)
+    '''
+
+    output = {}
+
+    for project_name in project_list:
+        lower_list = []
+        for i, master in enumerate(masters_list):
+            if project_name in master.projects:
+                try:
+                    approved_bc = master.data[project_name]['Re-baseline ' + data_baseline]
+                    quarter = master.data[project_name]['Reporting period (GMPP - Snapshot Date)']
+                    if approved_bc == 'Yes':
+                        lower_list.append((approved_bc, quarter, i))
+                except KeyError:
+                    pass
+
+        output[project_name] = lower_list
+
+    return output
+
+
+'''old functions not currently in use below here'''
+
+def financial_data(project_list, masters_list, bl_list, cells_to_capture, index):
+    '''
+    NOT IN USE. OLD FUNCTION. BEING STORED HERE FOR NOW. 
+
+    Function that creates a mini dictionary containing financial information. It used the financial_info function to
+    help build the dictionary output.
+
+    project_list: list of project names
+    master_list: master data for quarter of interest
+    bl_list:
+    cells_to_capture: financial info key names. see lists below
+    index:
+
+    '''
+
+    output = {}
+    for project_name in project_list:
+        master_data = masters_list[bl_list[project_name][index]]
+        get_financial_info = financial_info(project_name, master_data, cells_to_capture)
+        output[project_name] = get_financial_info
+
+    return output
+
+def financial_info(project_name, master_data, cells_to_capture):
+    '''
+    NOT IN USE. OLD FUNCTION. STORED HERE FOR NOW. 
+    function that creates dictionary containing financial {key : value} information.
+
+    project_name = name of project
+    master_data = quarter master data set
+    cells_to_capture = lists of keys of interest
+    '''
+
+    output = {}
+
+    if project_name in master_data.projects:
+        for item in master_data.data[project_name]:
+            if item in cells_to_capture:
+                if master_data.data[project_name][item] is None:
+                    output[item] = 0
+                else:
+                    value = master_data.data[project_name][item]
+                    output[item] = value
+
+    else:
+        for item in cells_to_capture:
+            output[item] = 0
+
+    return output
+
+def calculate_totals(project_name, financial_data):
+    '''
+    NOT IN USE. OLD FUNCTION. STORED HERE.
+    Function that calculates totals.
+
+    project_name: project name
+    financial_data: mini project financial dictionary
+    '''
+
+    working_data = financial_data[project_name]
+    rdel_list = []
+    cdel_list = []
+    ng_list = []
+
+    for rdel in capture_rdel:
+        try:
+            rdel_list.append(working_data[rdel])
+        except KeyError:
+            rdel_list.append(int(0))
+    for cdel in capture_cdel:
+        try:
+            cdel_list.append(working_data[cdel])
+        except KeyError:
+            cdel_list.append(int(0))
+    for ng in capture_ng:
+        try:
+            ng_list.append(working_data[ng])
+        except KeyError:
+            ng_list.append(int(0))
+
+    total_list = []
+    for i in range(len(rdel_list)):
+        total = rdel_list[i] + cdel_list[i] + ng_list[i]
+        total_list.append(total)
+
+    return total_list
+
+def calculate_income_totals(project_name, financial_data):
+    '''
+    FUNCTION NOT IN USE. BEING STORED HERE. 
+
+    function that calculates income totals.
+
+    project_name: project name
+    financial_data: mini project financial dictionary
+    '''
+
+    working_data = financial_data[project_name]
+    income_list = []
+
+    for income in capture_income:
+        try:
+            income_list.append(working_data[income])
+        except KeyError:
+            income_list.append(int(0))
+
+    return income_list
