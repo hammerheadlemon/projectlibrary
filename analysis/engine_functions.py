@@ -575,6 +575,25 @@ def baseline_information(project_list, masters_list, data_baseline):
 
     return output
 
+def baseline_index(baseline_data):
+    '''
+    Function that calculates the index list for baseline data
+    :param baseline_data: output created by either baseline_information or baseline_information_bc functions
+    :return: python dictionary in format 'project name':[index list]
+    '''
+
+    output = {}
+
+    for project_name in baseline_data:
+        lower_list = [0, 1]
+        for tuple_info in baseline_data[project_name]:
+            lower_list.append(tuple_info[2])
+
+        output[project_name] = lower_list
+
+    return output
+
+
 
 '''old functions not currently in use below here'''
 

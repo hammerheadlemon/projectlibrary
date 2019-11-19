@@ -1,7 +1,7 @@
 """place for storing all master templates"""
 
 from datamaps.api import project_data_from_master
-from analysis.engine_functions import baseline_information, baseline_information_bc
+from analysis.engine_functions import baseline_information, baseline_information_bc, baseline_index
 from openpyxl.styles import Font
 
 q2_1920 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_2_2019.xlsx', 2, 2019)
@@ -28,7 +28,8 @@ list_of_masters_all = [q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819, q4_
 all_project_names = q2_1920.projects
 
 '''baselining information'''
-baseline_index = baseline_information_bc(all_project_names, financial_analysis_masters_list)
+baseline_bcs = baseline_information_bc(all_project_names, financial_analysis_masters_list)
+bc_index = baseline_index(baseline_bcs)
 #baseline_bc = bc_ref_stages(all_project_names, financial_analysis_masters_list)
 #baseline_index = master_baseline_index(all_project_names, financial_analysis_masters_list, baseline_bc)
 
