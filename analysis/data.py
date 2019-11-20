@@ -1,7 +1,7 @@
 """place for storing all master templates"""
 
 from datamaps.api import project_data_from_master
-from analysis.engine_functions import baseline_information, baseline_information_bc, baseline_index
+from analysis.engine_functions import baseline_information_bc, baseline_index,get_project_income_profile, get_project_cost_profile
 from openpyxl.styles import Font
 
 q2_1920 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_2_2019.xlsx', 2, 2019)
