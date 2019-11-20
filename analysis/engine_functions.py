@@ -505,7 +505,7 @@ def baseline_index(baseline_data):
 
     return output
 
-def get_project_cost_profile(project_name_list, q_masters_data_list, cost_list, year_list, index):
+def get_project_cost_profile(project_name_list, q_masters_data_list, cost_list, year_list, bc_index, index):
     '''
     Function that gets projects project cost information and returns it in a python dictionary format.
     :param project_name_list: list of project names
@@ -546,7 +546,7 @@ def get_project_cost_profile(project_name_list, q_masters_data_list, cost_list, 
 
     return upper_dictionary
 
-def get_project_income_profile(project_name_list, q_masters_data_list, income_list, year_list, index):
+def get_project_income_profile(project_name_list, q_masters_data_list, income_list, year_list, bc_index, index):
     '''
     Function that gets projects project income information and returns it in a python dictionary format.
     :param project_name_list: list of project names
