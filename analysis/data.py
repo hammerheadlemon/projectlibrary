@@ -37,10 +37,11 @@ bc_index = baseline_index(baseline_bcs)
 red_text = Font(color="FF0000")
 
 '''lists and keys for running programmes'''
-income_list = [' Forecast - Income both Revenue and Capital'] # comparing_costs
-cost_list = [' RDEL Forecast Total', ' CDEL Forecast Total', ' Forecast Non-Gov'] # comparing_costs
-year_interest_list = ['19-20', '20-21', '21-22', '22-23', '23-24', '24-25', '25-26', '26-27', '27-28', '28-29'] # comparing_costs
-wlc_key = 'Total Forecast' # comparing costs
+income_list = [' Forecast - Income both Revenue and Capital']
+cost_list = [' RDEL Forecast Total', ' CDEL Forecast Total', ' Forecast Non-Gov']
+year_interest_list = ['19-20', '20-21', '21-22', '22-23', '23-24', '24-25', '25-26', '26-27', '27-28', '28-29',
+                      'Unprofiled']
+wlc_key = 'Total Forecast'
 
 
 '''list currently used for financial profile analysis'''
