@@ -25,10 +25,10 @@ list_of_masters_all = [q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819, q4_
                        q4_1617, q3_1617]
 
 '''list of project names. useful to have here and import into programme'''
-all_project_names = q2_1920.projects
+latest_quarter_projects = q2_1920.projects
 
 '''baselining information'''
-baseline_bcs = baseline_information_bc(all_project_names, financial_analysis_masters_list)
+baseline_bcs = baseline_information_bc(latest_quarter_projects, financial_analysis_masters_list)
 bc_index = baseline_index(baseline_bcs)
 #baseline_bc = bc_ref_stages(all_project_names, financial_analysis_masters_list)
 #baseline_index = master_baseline_index(all_project_names, financial_analysis_masters_list, baseline_bc)
@@ -41,6 +41,21 @@ income_list = [' Forecast - Income both Revenue and Capital']
 cost_list = [' RDEL Forecast Total', ' CDEL Forecast Total', ' Forecast Non-Gov']
 year_list = ['19-20', '20-21', '21-22', '22-23', '23-24', '24-25', '25-26', '26-27', '27-28', '28-29', 'Unprofiled']
 wlc_key = 'Total Forecast'
+
+'''Financial information'''
+latest_income_profiles = get_project_income_profile(latest_quarter_projects, financial_analysis_masters_list,
+                                                    income_list, year_list, 0)
+last_income_profiles = get_project_income_profile(latest_quarter_projects, financial_analysis_masters_list,
+                                                  income_list, year_list, 1)
+baseline_income_profiles = get_project_income_profile(latest_quarter_projects, financial_analysis_masters_list,
+                                                      income_list, year_list, 2)
+
+latest_cost_profiles = get_project_cost_profile(latest_quarter_projects, financial_analysis_masters_list,
+                                                      cost_list, year_list, 0)
+last_cost_profiles = get_project_cost_profile(latest_quarter_projects, financial_analysis_masters_list,
+                                                    cost_list, year_list, 1)
+baseline_cost_profiles = get_project_cost_profile(latest_quarter_projects, financial_analysis_masters_list,
+                                                        cost_list, year_list, 2)
 
 
 '''list currently used for financial profile analysis'''
@@ -107,3 +122,27 @@ iep = 'Intercity Express Programme'
 south_west_route_capacity = 'South West Route Capacity'
 thameslink = 'Thameslink Programme'
 wrlth = 'Western Rail Link to Heathrow'
+
+
+
+'''
+keeping as colour coding is useful
+s1 = chart.series[0]
+s1.graphicalProperties.line.solidFill = "cfcfea" #light blue
+s2 = chart.series[1]
+s2.graphicalProperties.line.solidFill = "e2f1bb" #light green
+s3 = chart.series[2]
+s3.graphicalProperties.line.solidFill = "eaba9d" #light red
+s4 = chart.series[3]
+s4.graphicalProperties.line.solidFil = "5097a4" #medium blue
+s5 = chart.series[4]
+s5.graphicalProperties.line.solidFill = "a0db8e" #medium green
+s6 = chart.series[5]
+s6.graphicalProperties.line.solidFill = "b77575" #medium red
+s7 = chart.series[6]
+s7.graphicalProperties.line.solidFil = "0e2f44" #dark blue
+s8 = chart.series[7]
+s8.graphicalProperties.line.solidFill = "29ab87" #dark green
+s9 = chart.series[8]
+s9.graphicalProperties.line.solidFill = "691c1c" #dark red
+'''

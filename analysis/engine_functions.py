@@ -188,94 +188,6 @@ def filter_gmpp(master):
 
     return project_list
 
-def bc_ref_stages(project_list, masters_list):
-    """One of key functions used for calculating which quarter to baseline data from.
-
-    Function returns a dictionary structured in the following way project name[('latest quarter info', 'latest bc'),
-    ('last quarter info', 'last bc'), ('last baseline quarter info', 'last baseline bc'), ('oldest quarter info',
-    'oldest bc')] depending on the amount information available in the data. Only the first three key values are returned,
-    to ensure consistency (which is helpful later).
-
-    project_list: list of project names
-    masters_list = list of master dictionaries
-
-    """
-    output = {}
-
-    for project_name in project_list:
-        #print(project_name)
-        all_list = []      # format [('quarter info': 'bc')] across all masters including project
-        bl_list = []        # format ['bc', 'bc'] across all masters. bl_list_2 removes duplicates
-        ref_list = []       # format as for all list but only contains the three tuples of interest
-        for master in masters_list:
-            try:
-                bc_stage = master.data[project_name]['BICC approval point']
-                quarter = master.data[project_name]['Reporting period (GMPP - Snapshot Date)']
-                tuple = (quarter, bc_stage)
-                all_list.append(tuple)
-            except KeyError:
-                pass
-
-        for i in range(0, len(all_list)):
-            bl_list.append(all_list[i][1])
-
-        '''below lines of text from stackoverflow. Question, remove duplicates in python list while
-        preserving order'''
-        seen = set()
-        seen_add = seen.add
-        bl_list_2 = [x for x in bl_list if not (x in seen or seen_add(x))]
-
-        ref_list.insert(0, all_list[0])     # puts the latest info into the list first
-
-        try:
-            ref_list.insert(1, all_list[1])    # puts that last info into the list
-        except IndexError:
-            ref_list.insert(1, all_list[0])
-
-        if len(bl_list_2) == 1:                     # puts oldest info into list (as basline if no baseline)
-            ref_list.insert(2, all_list[-1])
-        else:
-            for i in range(0, len(all_list)):      # puts in baseline
-                if all_list[i][1] == bl_list[0]:
-                    ref_list.insert(2, all_list[i])
-
-        '''there is a hack here i.e. returning only first three in ref_list. There's a bug which I don't fully
-        understand, but this solution is hopefully good enough for now'''
-        output[project_name] = ref_list[0:3]
-
-    return output
-
-def master_baseline_index(project_list, masters_list, baselines_list):
-    """
-    Another key function to calculate which quarter to baseline data from.
-
-    Function returns a dictionary structured as {'project name': [n,n,n]}.
-    The n (number) values denote where the relevant baseline master dictionaries are list of master dictionaries.
-    The first n in the latest master, second n is last master, third n is baseline master.
-
-    project_list: list of projects
-    masters_list: list of masters
-    baseline_list: list of project baseline information in the structure {'project name': [('quarter stamp', 'bc stage),
-    (), ()] as created by bc_ref_stage function.
-
-    """
-    output = {}
-
-    for project_name in project_list:
-        master_q_list = []
-        for key in baselines_list[project_name]:
-            for x, master in enumerate(masters_list):
-                try:
-                    quarter = master.data[project_name]['Reporting period (GMPP - Snapshot Date)']
-                    if quarter == key[0]:
-                        master_q_list.append(x)
-                except KeyError:
-                    pass
-
-        output[project_name] = master_q_list
-
-    return output
-
 def convert_rag_text(dca_rating):
 
     if dca_rating == 'Green':
@@ -593,6 +505,76 @@ def baseline_index(baseline_data):
 
     return output
 
+def get_project_cost_profile(project_name_list, q_masters_data_list, cost_list, year_list, index):
+    '''
+    Function that gets projects project cost information and returns it in a python dictionary format.
+    :param project_name_list: list of project names
+    :param q_masters_data_list: list of master python dictionaries containing quarter information
+    :param cost_list: list of cost key names. this is necessary due to the total cost having be calculated across
+    rdel, cdel and non-gov breakdown.
+    :param year_list: list of year keys e.g. '19-20', '20-21'
+    :param index: index value for which master to use from the q_master_data_list . 0 is for latest, 1 last and
+    2 baseline. The actual index list q_master_list is set at a global level in this programme.
+    :return: a dictionary structured 'project_name': 'year rdel' : value, 'year cdel' : value, 'year Non-Gov' : value,
+    'year total' : value
+    '''
+
+    upper_dictionary = {}
+
+    for project_name in project_name_list:
+        lower_dictionary = {}
+        for year in year_list:
+            project_data = q_masters_data_list[bc_index[project_name][index]].data[project_name]
+            total = 0
+            for type in cost_list:
+
+                try:
+                    lower_dictionary[year + type] = project_data[year + type]
+                except KeyError:
+                    lower_dictionary[year + type] = None
+
+                if year + type in project_data.keys():
+                    cost = project_data[year + type]
+                    try:
+                        total = total + cost
+                    except TypeError:
+                        pass
+
+            lower_dictionary[year + ' total'] = total
+
+        upper_dictionary[project_name] = lower_dictionary
+
+    return upper_dictionary
+
+def get_project_income_profile(project_name_list, q_masters_data_list, income_list, year_list, index):
+    '''
+    Function that gets projects project income information and returns it in a python dictionary format.
+    :param project_name_list: list of project names
+    :param q_masters_data_list: list of master python dictionaries containing quarter information
+    :param income_list: list of income key names.
+    :param year_list: list of year keys e.g. '19-20', '20-21'
+    :param index: index value for which master to use from the q_master_data_list . 0 is for latest, 1 last and
+    2 baseline. The actual index list q_master_list is set at a global level in this programme.
+    :return: a dictionary structured 'project_name' : 'year income' : value
+    '''
+
+    upper_dictionary = {}
+
+    for project_name in project_name_list:
+        lower_dictionary = {}
+        for year in year_list:
+            project_data = q_masters_data_list[bc_index[project_name][index]].data[project_name]
+            for type in income_list:
+
+                try:
+                    lower_dictionary[year + type] = project_data[year + type]
+                except KeyError:
+                    lower_dictionary[year + type] = 0
+
+        upper_dictionary[project_name] = lower_dictionary
+
+    return upper_dictionary
+
 
 
 '''old functions not currently in use below here'''
@@ -704,3 +686,97 @@ def calculate_income_totals(project_name, financial_data):
             income_list.append(int(0))
 
     return income_list
+
+
+def bc_ref_stages(project_list, masters_list):
+    """
+    NOLONGER IN USE. STORED FOR NOW.
+    One of key functions used for calculating which quarter to baseline data from.
+
+    Function returns a dictionary structured in the following way project name[('latest quarter info', 'latest bc'),
+    ('last quarter info', 'last bc'), ('last baseline quarter info', 'last baseline bc'), ('oldest quarter info',
+    'oldest bc')] depending on the amount information available in the data. Only the first three key values are returned,
+    to ensure consistency (which is helpful later).
+
+    project_list: list of project names
+    masters_list = list of master dictionaries
+
+    """
+    output = {}
+
+    for project_name in project_list:
+        # print(project_name)
+        all_list = []  # format [('quarter info': 'bc')] across all masters including project
+        bl_list = []  # format ['bc', 'bc'] across all masters. bl_list_2 removes duplicates
+        ref_list = []  # format as for all list but only contains the three tuples of interest
+        for master in masters_list:
+            try:
+                bc_stage = master.data[project_name]['BICC approval point']
+                quarter = master.data[project_name]['Reporting period (GMPP - Snapshot Date)']
+                tuple = (quarter, bc_stage)
+                all_list.append(tuple)
+            except KeyError:
+                pass
+
+        for i in range(0, len(all_list)):
+            bl_list.append(all_list[i][1])
+
+        '''below lines of text from stackoverflow. Question, remove duplicates in python list while
+        preserving order'''
+        seen = set()
+        seen_add = seen.add
+        bl_list_2 = [x for x in bl_list if not (x in seen or seen_add(x))]
+
+        ref_list.insert(0, all_list[0])  # puts the latest info into the list first
+
+        try:
+            ref_list.insert(1, all_list[1])  # puts that last info into the list
+        except IndexError:
+            ref_list.insert(1, all_list[0])
+
+        if len(bl_list_2) == 1:  # puts oldest info into list (as basline if no baseline)
+            ref_list.insert(2, all_list[-1])
+        else:
+            for i in range(0, len(all_list)):  # puts in baseline
+                if all_list[i][1] == bl_list[0]:
+                    ref_list.insert(2, all_list[i])
+
+        '''there is a hack here i.e. returning only first three in ref_list. There's a bug which I don't fully
+        understand, but this solution is hopefully good enough for now'''
+        output[project_name] = ref_list[0:3]
+
+    return output
+
+
+def master_baseline_index(project_list, masters_list, baselines_list):
+    """
+    NOLONGER IN USE. STORED FOR NOW.
+
+    Another key function to calculate which quarter to baseline data from.
+
+    Function returns a dictionary structured as {'project name': [n,n,n]}.
+    The n (number) values denote where the relevant baseline master dictionaries are list of master dictionaries.
+    The first n in the latest master, second n is last master, third n is baseline master.
+
+    project_list: list of projects
+    masters_list: list of masters
+    baseline_list: list of project baseline information in the structure {'project name': [('quarter stamp', 'bc stage),
+    (), ()] as created by bc_ref_stage function.
+
+    """
+    output = {}
+
+    for project_name in project_list:
+        master_q_list = []
+        for key in baselines_list[project_name]:
+            for x, master in enumerate(masters_list):
+                try:
+                    quarter = master.data[project_name]['Reporting period (GMPP - Snapshot Date)']
+                    if quarter == key[0]:
+                        master_q_list.append(x)
+                except KeyError:
+                    pass
+
+        output[project_name] = master_q_list
+
+    return output
