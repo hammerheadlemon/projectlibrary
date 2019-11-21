@@ -1,1 +1,1 @@
--e git+https://github.com/hammerheadlemon/datamaps#egg=datamaps
+datamaps>=1.0.0
