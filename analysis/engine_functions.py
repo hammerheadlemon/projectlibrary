@@ -577,6 +577,31 @@ def get_project_income_profile(project_name_list, q_masters_data_list, income_li
 
     return upper_dictionary
 
+def calculate_group_project_total(project_name_list, master_data, project_name_no_count_list, type_list, year_list):
+    '''
+    calculates the total cost figure for each year and type of spend e.g. RDEL 19-20, for all projects of interest.
+    :param project_name_list: list of project names
+    :param master_data: master data set as created by the get_project_cost_profile
+    :param project_name_no_count_list: list of project names to remove from total figures, to ensure no double counting
+    e.g. if there are separate schemes as well as overall programme reporting.
+    :param type_list: the type of financial figure list being counted. e.g. costs or income
+    :return: python dictionary in format 'year + spend type': total
+    '''
+
+    output = {}
+
+    project_list = [x for x in project_name_list if x not in project_name_no_count_list]
+
+    for cost in type_list:
+        for year in year_list:
+            total = 0
+            for project_name in project_list:
+                total = total + master_data[project_name][year + cost]
+
+            output[year + cost] = total
+
+    return output
+
 
 
 '''old functions not currently in use below here'''
