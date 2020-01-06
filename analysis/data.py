@@ -25,10 +25,10 @@ list_of_masters_all = [q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819, q4_
                        q4_1617, q3_1617]
 
 '''list of project names. useful to have here and import into programme'''
-latest_quarter_projects = q2_1920.projects
+latest_quarter_project_names = q2_1920.projects
 
 '''baselining information'''
-baseline_bcs = baseline_information_bc(latest_quarter_projects, financial_analysis_masters_list)
+baseline_bcs = baseline_information_bc(latest_quarter_project_names, financial_analysis_masters_list)
 bc_index = baseline_index(baseline_bcs)
 #baseline_bc = bc_ref_stages(all_project_names, financial_analysis_masters_list)
 #baseline_index = master_baseline_index(all_project_names, financial_analysis_masters_list, baseline_bc)
@@ -43,18 +43,18 @@ year_list = ['19-20', '20-21', '21-22', '22-23', '23-24', '24-25', '25-26', '26-
 wlc_key = 'Total Forecast'
 
 '''Financial information'''
-latest_income_profiles = get_project_income_profile(latest_quarter_projects, financial_analysis_masters_list,
+latest_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
                                                     income_list, year_list, bc_index, 0)
-last_income_profiles = get_project_income_profile(latest_quarter_projects, financial_analysis_masters_list,
+last_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
                                                   income_list, year_list, bc_index, 1)
-baseline_income_profiles = get_project_income_profile(latest_quarter_projects, financial_analysis_masters_list,
+baseline_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
                                                       income_list, year_list, bc_index, 2)
 
-latest_cost_profiles = get_project_cost_profile(latest_quarter_projects, financial_analysis_masters_list,
+latest_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
                                                       cost_list, year_list, bc_index, 0)
-last_cost_profiles = get_project_cost_profile(latest_quarter_projects, financial_analysis_masters_list,
+last_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
                                                     cost_list, year_list, bc_index, 1)
-baseline_cost_profiles = get_project_cost_profile(latest_quarter_projects, financial_analysis_masters_list,
+baseline_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
                                                         cost_list, year_list, bc_index, 2)
 
 
