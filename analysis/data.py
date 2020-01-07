@@ -46,18 +46,18 @@ wlc_key = 'Total Forecast'
 
 '''Financial information'''
 latest_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
-                                                    income_list, year_list, bc_index, 0)
+                                                    income_list, year_list, fin_bc_index, 0)
 last_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
-                                                  income_list, year_list, bc_index, 1)
+                                                  income_list, year_list, fin_bc_index, 1)
 baseline_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
-                                                      income_list, year_list, bc_index, 2)
+                                                      income_list, year_list, fin_bc_index, 2)
 
 latest_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
-                                                      cost_list, year_list, bc_index, 0)
+                                                      cost_list, year_list, fin_bc_index, 0)
 last_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
-                                                    cost_list, year_list, bc_index, 1)
+                                                    cost_list, year_list, fin_bc_index, 1)
 baseline_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
-                                                        cost_list, year_list, bc_index, 2)
+                                                        cost_list, year_list, fin_bc_index, 2)
 
 
 financial_narrative_keys = ['Project Costs Narrative',   # financial_dca_dashboard
