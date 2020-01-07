@@ -28,10 +28,12 @@ list_of_masters_all = [q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819, q4_
 latest_quarter_project_names = q2_1920.projects
 
 '''baselining information'''
-baseline_bcs = baseline_information_bc(latest_quarter_project_names, financial_analysis_masters_list)
+# generenal baseline information
+baseline_bcs = baseline_information_bc(latest_quarter_project_names, list_of_masters_all)
 bc_index = baseline_index(baseline_bcs)
-#baseline_bc = bc_ref_stages(all_project_names, financial_analysis_masters_list)
-#baseline_index = master_baseline_index(all_project_names, financial_analysis_masters_list, baseline_bc)
+# finance baseline information
+fin_baseline_bcs = baseline_information_bc(latest_quarter_project_names, financial_analysis_masters_list)
+fin_bc_index = baseline_index(fin_baseline_bcs)
 
 '''for highlight text'''
 red_text = Font(color="FF0000")
