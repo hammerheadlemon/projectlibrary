@@ -1,0 +1,1 @@
+datamaps @ https://github.com/hammerheadlemon/datamaps/archive/master.zip#egg=datamaps

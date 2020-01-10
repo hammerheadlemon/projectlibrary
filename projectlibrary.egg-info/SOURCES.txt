@@ -1,0 +1,9 @@
+setup.py
+analysis/__init__.py
+analysis/data.py
+analysis/engine_functions.py
+projectlibrary.egg-info/PKG-INFO
+projectlibrary.egg-info/SOURCES.txt
+projectlibrary.egg-info/dependency_links.txt
+projectlibrary.egg-info/requires.txt
+projectlibrary.egg-info/top_level.txt
