@@ -4,7 +4,7 @@ from datamaps.api import project_data_from_master
 from analysis.engine_functions import baseline_information_bc, baseline_index,get_project_income_profile, get_project_cost_profile
 from openpyxl.styles import Font
 
-q2_1920 = project_data_from_master('~/Documents/portfolio/core_date/master_2_2019.xlsx', 2, 2019)
+q2_1920 = project_data_from_master('/home/will/Documents/portfolio/core_date/master_2_2019.xlsx', 2, 2019)
 q1_1920 = project_data_from_master('~/Documents/portfolio/core_date/master_1_2019.xlsx', 1, 2019)
 q4_1819 = project_data_from_master('~/Documents/portfolio/core_date/master_4_2018.xlsx', 4, 2018)
 q3_1819 = project_data_from_master('~/Documents/portfolio/core_date/master_3_2018.xlsx', 3, 2018)
