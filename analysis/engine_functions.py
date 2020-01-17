@@ -203,7 +203,7 @@ def convert_rag_text(dca_rating):
     elif dca_rating == 'Red':
         return 'R'
     else:
-        return 'None'
+        return ''
 
 def filter_project_group(master_data, group):
     '''
