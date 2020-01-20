@@ -14,8 +14,8 @@ from openpyxl.styles.differential import DifferentialStyle
 from openpyxl.formatting import Rule
 
 '''dates for functions. python date format is Year, Month, day'''
-bicc_date = datetime.date(2019, 11, 11)
-milestone_analysis_date = datetime.date(2019, 7, 1)
+bicc_date = datetime.date(2019, 2, 10)
+milestone_analysis_date = datetime.date(2019, 11, 1)
 
 def all_milestone_data_bulk(project_list, master_data):
     '''
