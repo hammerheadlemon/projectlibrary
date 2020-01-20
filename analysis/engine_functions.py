@@ -568,7 +568,10 @@ def get_project_income_profile(project_name_list, q_masters_data_list, income_li
     for project_name in project_name_list:
         lower_dictionary = {}
         for year in year_list:
-            project_data = q_masters_data_list[bc_index[project_name][index]].data[project_name]
+            try:
+                project_data = q_masters_data_list[bc_index[project_name][index]].data[project_name]
+            except KeyError:
+                project_data = q_masters_data_list[0].data[project_name]
             for type in income_list:
 
                 try:
