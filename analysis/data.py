@@ -2,7 +2,7 @@
 
 from datamaps.api import project_data_from_master
 from analysis.engine_functions import baseline_information_bc, baseline_index,get_project_income_profile, get_project_cost_profile
-from openpyxl.styles import Font
+from openpyxl.styles import Font, PatternFill
 
 q2_1920 = project_data_from_master('/home/will/Documents/portfolio/core_date/master_2_2019.xlsx', 2, 2019)
 q1_1920 = project_data_from_master('/home/will/Documents/portfolio/core_date/master_1_2019.xlsx', 1, 2019)
@@ -43,8 +43,8 @@ latest_quarter_project_names = q2_1920.projects
 
 '''baselining information'''
 # general baseline information
-baseline_bcs = baseline_information_bc(latest_quarter_project_names, list_of_masters_all)
-bc_index = baseline_index(baseline_bcs)
+baseline_bc_stamp = baseline_information_bc(latest_quarter_project_names, list_of_masters_all)
+bc_index = baseline_index(baseline_bc_stamp)
 # finance baseline information
 fin_baseline_bcs = baseline_information_bc(latest_quarter_project_names, financial_analysis_masters_list)
 fin_bc_index = baseline_index(fin_baseline_bcs)
@@ -120,6 +120,29 @@ wrlth = 'Western Rail Link to Heathrow'
 '''list of projects to exclude from counting of totals in portfolio financial profile'''
 dont_double_count = [hs2_2b, hs2_2a, hs2_1, em_franchise, west_coast_partnership, northern_powerhouse,
                      east_coast_digital]
+
+'''highlight cells that contain RAG text, with background and text the same colour'''
+
+'''store of different colours'''
+ag_text = Font(color="00a5b700") # text same colour as background
+ag_fill = PatternFill(bgColor="00a5b700")
+ar_text = Font(color="00f97b31") # text same colour as background
+ar_fill = PatternFill(bgColor="00f97b31")
+red_text = Font(color="00fc2525") # text same colour as background
+red_fill = PatternFill(bgColor="00fc2525")
+green_text = Font(color="0017960c") # text same colour as background
+green_fill = PatternFill(bgColor="0017960c")
+amber_text = Font(color="00fce553") # text same colour as background
+amber_fill = PatternFill(bgColor="00fce553")
+
+black_text = Font(color="00000000")
+
+'''NOTE. these three lists need to have rag ratings in the same order'''
+'''different colours are placed into a list'''
+txt_colour_list = [ag_text, ar_text, red_text, green_text, amber_text]
+fill_colour_list = [ag_fill, ar_fill, red_fill, green_fill, amber_fill]
+'''list of how rag ratings are shown in document'''
+rag_txt_list = ["A/G", "A/R", "R", "G", "A"]
 
 '''
 keeping as colour coding is useful
