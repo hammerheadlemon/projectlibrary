@@ -529,7 +529,11 @@ def get_project_cost_profile(project_name_list, q_masters_data_list, cost_list, 
     for project_name in project_name_list:
         lower_dictionary = {}
         for year in year_list:
-            project_data = q_masters_data_list[bc_index[project_name][index]].data[project_name]
+            try:
+                project_data = q_masters_data_list[bc_index[project_name][index]].data[project_name]
+            except KeyError:
+                project_data = q_masters_data_list[0].data[project_name]
+
             total = 0
             for type in cost_list:
 
