@@ -436,7 +436,7 @@ def combine_narrtives(project_name, master_data, key_list):
 
 def baseline_information_bc(project_list, masters_list):
     '''
-    Function that calculates when project business case of have changes. Only returns where there have been changes.
+    Function that calculates when project business case has changed. Only returns where there have been changes.
     :param project_list: list of project names
     :param masters_list: list of masters with quarter information
     :return: python dictionary in format 'project name':('BC', 'Quarter Stamp', index position in masters_list)

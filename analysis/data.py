@@ -4,6 +4,7 @@ from datamaps.api import project_data_from_master
 from analysis.engine_functions import baseline_information_bc, baseline_index,get_project_income_profile, get_project_cost_profile
 from openpyxl.styles import Font, PatternFill
 
+q3_1920 = project_data_from_master('/home/will/Documents/portfolio/core_date/master_3_2019.xlsx', 3, 2019)
 q2_1920 = project_data_from_master('/home/will/Documents/portfolio/core_date/master_2_2019.xlsx', 2, 2019)
 q1_1920 = project_data_from_master('/home/will/Documents/portfolio/core_date/master_1_2019.xlsx', 1, 2019)
 q4_1819 = project_data_from_master('/home/will/Documents/portfolio/core_date/master_4_2018.xlsx', 4, 2018)
@@ -35,11 +36,11 @@ q3_1617 = project_data_from_master('/home/will/Documents/portfolio/core_date/mas
 one_quarter_master_list = [q1_1920]
 bespoke_group_masters_list = [q2_1819, q1_1819]
 financial_analysis_masters_list = [q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819]
-list_of_masters_all = [q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819, q4_1718, q3_1718, q2_1718, q1_1718,
+list_of_masters_all = [q3_1920, q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819, q4_1718, q3_1718, q2_1718, q1_1718,
                        q4_1617, q3_1617]
 
 '''list of project names. useful to have here and import into programme'''
-latest_quarter_project_names = q2_1920.projects
+latest_quarter_project_names = q3_1920.projects
 
 '''baselining information'''
 # general baseline information
