@@ -11,6 +11,7 @@ import random
 import datetime
 from openpyxl.styles import Font, PatternFill
 from openpyxl.styles.differential import DifferentialStyle
+from openpyxl.formatting import Rule
 
 '''dates for functions. python date format is Year, Month, day'''
 bicc_date = datetime.date(2019, 11, 11)
