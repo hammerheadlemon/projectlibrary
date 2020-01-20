@@ -51,6 +51,7 @@ fin_bc_index = baseline_index(fin_baseline_bcs)
 
 '''for highlight text'''
 red_text = Font(color="FF0000")
+salmon_fill = PatternFill(start_color='ff8080', end_color='ff8080', fill_type='solid')
 
 '''lists and keys for running programmes'''
 income_list = [' Forecast - Income both Revenue and Capital']

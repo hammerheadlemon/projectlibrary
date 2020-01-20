@@ -605,7 +605,47 @@ def calculate_group_project_total(project_name_list, master_data, project_name_n
 
     return output
 
+def conditional_formatting(ws):
+    '''
+    function applies conditional formatting for RAG colors... in development.
+    :param ws: worksheet
+    :return: worksheet with conditional formatting
+    '''
 
+    for column in ws.max_column:
+        for i, dca in enumerate(rag_txt_list):
+            text = black_text
+            fill = fill_colour_list[i]
+            dxf = DifferentialStyle(font=text, fill=fill)
+            rule = Rule(type="containsText", operator="containsText", text=dca, dxf=dxf)
+            for_rule_formula = 'NOT(ISERROR(SEARCH("' + dca + '",' + column + '5)))'
+            rule.formula = [for_rule_formula]
+            ws.conditional_formatting.add('' + column + '5:' + column + '60', rule)
+
+    return ws
+
+def grey_conditional_formatting(ws):
+    '''
+    function applies grey conditional formatting for 'Not Reporting'.
+    :param worksheet: ws
+    :return: cf of sheet
+    '''
+
+    grey_text = Font(color="f0f0f0")
+    grey_fill = PatternFill(bgColor="f0f0f0")
+    dxf = DifferentialStyle(font=grey_text, fill=grey_fill)
+    rule = Rule(type="containsText", operator="containsText", text="Not reporting", dxf=dxf)
+    rule.formula = ['NOT(ISERROR(SEARCH("Not reporting",A1)))']
+    ws.conditional_formatting.add('A1:X80', rule)
+
+    grey_text = Font(color="cfcfea")
+    grey_fill = PatternFill(bgColor="cfcfea")
+    dxf = DifferentialStyle(font=grey_text, fill=grey_fill)
+    rule = Rule(type="containsText", operator="containsText", text="Data not collected", dxf=dxf)
+    rule.formula = ['NOT(ISERROR(SEARCH("Data not collected",A1)))']
+    ws.conditional_formatting.add('A1:X80', rule)
+
+    return ws
 
 '''old functions not currently in use below here'''
 
