@@ -9,6 +9,7 @@ NOTE. Python date format is (YYYY,MM,DD)
 
 import random
 import datetime
+from openpyxl.styles import Font, PatternFill
 
 '''dates for functions. python date format is Year, Month, day'''
 bicc_date = datetime.date(2019, 11, 11)
