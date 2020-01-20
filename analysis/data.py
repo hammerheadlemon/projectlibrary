@@ -35,7 +35,7 @@ q3_1617 = project_data_from_master('/home/will/Documents/portfolio/core_date/mas
 """list of dictionaries"""
 one_quarter_master_list = [q1_1920]
 bespoke_group_masters_list = [q2_1819, q1_1819]
-financial_analysis_masters_list = [q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819]
+financial_analysis_masters_list = [q3_1920, q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819]
 list_of_masters_all = [q3_1920, q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819, q4_1718, q3_1718, q2_1718, q1_1718,
                        q4_1617, q3_1617]
 
