@@ -15,7 +15,7 @@ from openpyxl.formatting import Rule
 #from analysis.data import q2_1920
 from datamaps.api import project_data_from_master
 
-last_qrt = project_data_from_master('/home/will/Documents/portfolio/core_date/master_2_2019.xlsx', 2, 2019)
+last_qrt = project_data_from_master('/home/will/Documents/analysis_engine/core_date/master_2_2019.xlsx', 2, 2019)
 
 '''dates for functions. python date format is Year, Month, day'''
 bicc_date = datetime.date(2019, 2, 10)
