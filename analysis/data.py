@@ -1,48 +1,35 @@
 """place for storing all master templates"""
 
 from datamaps.api import project_data_from_master
-from analysis.engine_functions import baseline_information_bc, baseline_index,get_project_income_profile, get_project_cost_profile
+from analysis.engine_functions import baseline_information_bc, baseline_index,get_project_income_profile, \
+    get_project_cost_profile
 from openpyxl.styles import Font, PatternFill
 import platform
 from pathlib import Path
 
 def _platform_docs_dir() -> Path:
     if platform.system() == "Linux":
-        return Path.home() / "Documents" / "analysis_engine" / "core_data"
+        return Path.home() / "Documents" / "analysis_engine"
     if platform.system() == "Darwin":
-        return Path.home() / "Documents" / "analysis_engine" / "core_data"
+        return Path.home() / "Documents" / "analysis_engine"
     else:
-        return Path.home() / "Documents" / "analysis_engine" / "core_data"
+        return Path.home() / "Documents" / "analysis_engine"
 
 root_path = _platform_docs_dir()
 
-q3_1920 = project_data_from_master(root_path/'master_3_2019.xlsx', 3, 2019)
-q2_1920 = project_data_from_master(root_path/'master_2_2019.xlsx', 2, 2019)
-q1_1920 = project_data_from_master(root_path/'master_1_2019.xlsx', 1, 2019)
-q4_1819 = project_data_from_master(root_path/'master_4_2018.xlsx', 4, 2018)
-q3_1819 = project_data_from_master(root_path/'master_3_2018.xlsx', 3, 2018)
-q2_1819 = project_data_from_master(root_path/'master_2_2018.xlsx', 2, 2018)
-q1_1819 = project_data_from_master(root_path/'master_1_2018.xlsx', 1, 2018)
-q4_1718 = project_data_from_master(root_path/'master_4_2017.xlsx', 4, 2017)
-q3_1718 = project_data_from_master(root_path/'master_3_2017.xlsx', 3, 2017)
-q2_1718 = project_data_from_master(root_path/'master_2_2017.xlsx', 2, 2017)
-q1_1718 = project_data_from_master(root_path/'master_1_2017.xlsx', 1, 2017)
-q4_1617 = project_data_from_master(root_path/'master_4_2016.xlsx', 4, 2016)
-q3_1617 = project_data_from_master(root_path/'master_3_2016.xlsx', 3, 2016)
-
-#data paths for window users
-# q2_1920 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_2_2019.xlsx', 2, 2019)
-# q1_1920 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_1_2019.xlsx', 1, 2019)
-# q4_1819 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_4_2018.xlsx', 4, 2018)
-# q3_1819 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_3_2018.xlsx', 3, 2018)
-# q2_1819 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_2_2018.xlsx', 2, 2018)
-# q1_1819 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_1_2018.xlsx', 1, 2018)
-# q4_1718 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_4_2017.xlsx', 4, 2017)
-# q3_1718 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_3_2017.xlsx', 3, 2017)
-# q2_1718 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_2_2017.xlsx', 2, 2017)
-# q1_1718 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_1_2017.xlsx', 1, 2017)
-# q4_1617 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_4_2016.xlsx', 4, 2016)
-# q3_1617 = project_data_from_master('C:\\Users\\Standalone\\general\\core_data\\master_3_2016.xlsx', 3, 2016)
+q3_1920 = project_data_from_master(root_path/'core_data/master_3_2019.xlsx', 3, 2019)
+q2_1920 = project_data_from_master(root_path/'core_data/master_2_2019.xlsx', 2, 2019)
+q1_1920 = project_data_from_master(root_path/'core_data/master_1_2019.xlsx', 1, 2019)
+q4_1819 = project_data_from_master(root_path/'core_data/master_4_2018.xlsx', 4, 2018)
+q3_1819 = project_data_from_master(root_path/'core_data/master_3_2018.xlsx', 3, 2018)
+q2_1819 = project_data_from_master(root_path/'core_data/master_2_2018.xlsx', 2, 2018)
+q1_1819 = project_data_from_master(root_path/'core_data/master_1_2018.xlsx', 1, 2018)
+q4_1718 = project_data_from_master(root_path/'core_data/master_4_2017.xlsx', 4, 2017)
+q3_1718 = project_data_from_master(root_path/'core_data/master_3_2017.xlsx', 3, 2017)
+q2_1718 = project_data_from_master(root_path/'core_data/master_2_2017.xlsx', 2, 2017)
+q1_1718 = project_data_from_master(root_path/'core_data/master_1_2017.xlsx', 1, 2017)
+q4_1617 = project_data_from_master(root_path/'core_data/master_4_2016.xlsx', 4, 2016)
+q3_1617 = project_data_from_master(root_path/'core_data/master_3_2016.xlsx', 3, 2016)
 
 """list of dictionaries"""
 one_quarter_master_list = []
