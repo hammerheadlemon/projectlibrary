@@ -12,6 +12,7 @@ import datetime
 from openpyxl.styles import Font, PatternFill
 from openpyxl.styles.differential import DifferentialStyle
 from openpyxl.formatting import Rule
+from analysis.data import list_of_masters_all
 
 '''dates for functions. python date format is Year, Month, day'''
 bicc_date = datetime.date(2019, 2, 10)
@@ -502,9 +503,12 @@ def baseline_index(baseline_data):
     output = {}
 
     for project_name in baseline_data:
-        lower_list = [0, 1]
-        for tuple_info in baseline_data[project_name]:
-            lower_list.append(tuple_info[2])
+        if project_name in list_of_masters_all[1]:
+            lower_list = [0, 1]
+            for tuple_info in baseline_data[project_name]:
+                lower_list.append(tuple_info[2])
+        else:
+            lower_list = [0, None, 0]  # this is to handle new projects that have only one quarters reporting
 
         output[project_name] = lower_list
 
@@ -531,25 +535,26 @@ def get_project_cost_profile(project_name_list, q_masters_data_list, cost_list, 
         for year in year_list:
             try:
                 project_data = q_masters_data_list[bc_index[project_name][index]].data[project_name]
-            except KeyError:
-                project_data = q_masters_data_list[0].data[project_name]
 
-            total = 0
-            for type in cost_list:
+                total = 0
+                for type in cost_list:
 
-                try:
-                    lower_dictionary[year + type] = project_data[year + type]
-                except KeyError:
-                    lower_dictionary[year + type] = None
-
-                if year + type in project_data.keys():
-                    cost = project_data[year + type]
                     try:
-                        total = total + cost
-                    except TypeError:
-                        pass
+                        lower_dictionary[year + type] = project_data[year + type]
+                    except KeyError:
+                        lower_dictionary[year + type] = None
 
-            lower_dictionary[year + ' total'] = total
+                    if year + type in project_data.keys():
+                        cost = project_data[year + type]
+                        try:
+                            total = total + cost
+                        except TypeError:
+                            pass
+
+                lower_dictionary[year + ' total'] = total
+
+            except TypeError:
+                lower_dictionary[year + ' total'] = 0
 
         upper_dictionary[project_name] = lower_dictionary
 
@@ -574,13 +579,14 @@ def get_project_income_profile(project_name_list, q_masters_data_list, income_li
         for year in year_list:
             try:
                 project_data = q_masters_data_list[bc_index[project_name][index]].data[project_name]
-            except KeyError:
-                project_data = q_masters_data_list[0].data[project_name]
-            for type in income_list:
 
-                try:
-                    lower_dictionary[year + type] = project_data[year + type]
-                except KeyError:
+                for type in income_list:
+                    try:
+                        lower_dictionary[year + type] = project_data[year + type]
+                    except KeyError:
+                        lower_dictionary[year + type] = 0
+            except TypeError:
+                for type in income_list:
                     lower_dictionary[year + type] = 0
 
         upper_dictionary[project_name] = lower_dictionary
