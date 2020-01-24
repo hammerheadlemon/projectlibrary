@@ -41,9 +41,9 @@ list_of_masters_all = [q3_1920, q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_
 '''list of project names. useful to have here and import into programme'''
 latest_quarter_project_names = q3_1920.projects
 
-'''dates for functions. python date format is Year, Month, day'''
-bicc_date = datetime.date(2019, 2, 10)
-milestone_analysis_date = datetime.date(2019, 11, 1)
+# '''dates for functions. python date format is Year, Month, day'''
+# bicc_date = datetime.date(2019, 2, 10)
+# milestone_analysis_date = datetime.date(2019, 11, 1)
 
 '''baselining information'''
 # general baseline information
