@@ -12,7 +12,7 @@ import datetime
 from openpyxl.styles import Font, PatternFill
 from openpyxl.styles.differential import DifferentialStyle
 from openpyxl.formatting import Rule
-from analysis.data import list_of_masters_all
+from analysis.data import list_of_masters_all, bicc_date, milestone_analysis_date
 from datamaps.api import project_data_from_master
 
 #last_qrt = project_data_from_master('/home/will/Documents/analysis_engine/core_data/master_2_2019.xlsx', 2, 2019)
