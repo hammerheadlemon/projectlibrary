@@ -12,25 +12,27 @@ import datetime
 from openpyxl.styles import Font, PatternFill
 from openpyxl.styles.differential import DifferentialStyle
 from openpyxl.formatting import Rule
-#from analysis.data import list_of_masters_all, bicc_date, milestone_analysis_date
+from .data import list_of_masters_all, bicc_date, milestone_analysis_date
 from datamaps.api import project_data_from_master
-import platform
-from pathlib import Path
+# import platform
+# from pathlib import Path
+#
+# '''temp hack here, which is required as can't seem to import from data file. '''
+# def _platform_docs_dir() -> Path:
+#     if platform.system() == "Linux":
+#         return Path.home() / "Documents" / "analysis_engine"
+#     if platform.system() == "Darwin":
+#         return Path.home() / "Documents" / "analysis_engine"
+#     else:
+#         return Path.home() / "Documents" / "analysis_engine"
+# root_path = _platform_docs_dir()
+# last_qrt = project_data_from_master(root_path/'core_data/master_2_2019.xlsx', 2, 2019)
 
-'''temp hack here, which is required as can't seem to import from data file. '''
-def _platform_docs_dir() -> Path:
-    if platform.system() == "Linux":
-        return Path.home() / "Documents" / "analysis_engine"
-    if platform.system() == "Darwin":
-        return Path.home() / "Documents" / "analysis_engine"
-    else:
-        return Path.home() / "Documents" / "analysis_engine"
-root_path = _platform_docs_dir()
-last_qrt = project_data_from_master(root_path/'core_data/master_2_2019.xlsx', 2, 2019)
+last_qrt = list_of_masters_all[1]
 
-'''dates for functions. python date format is Year, Month, day'''
-bicc_date = datetime.date(2020, 2, 10)
-milestone_analysis_date = datetime.date(2019, 11, 1)
+# '''dates for functions. python date format is Year, Month, day'''
+# bicc_date = datetime.date(2020, 2, 10)
+# milestone_analysis_date = datetime.date(2019, 11, 1)
 
 def all_milestone_data_bulk(project_list, master_data):
     '''
