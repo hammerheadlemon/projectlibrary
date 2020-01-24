@@ -12,7 +12,7 @@ import datetime
 from openpyxl.styles import Font, PatternFill
 from openpyxl.styles.differential import DifferentialStyle
 from openpyxl.formatting import Rule
-from .data import list_of_masters_all, bicc_date, milestone_analysis_date
+from data import list_of_masters_all, bicc_date, milestone_analysis_date
 from datamaps.api import project_data_from_master
 # import platform
 # from pathlib import Path
