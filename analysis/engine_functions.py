@@ -571,7 +571,7 @@ def get_project_cost_profile(project_name_list, q_masters_data_list, cost_list, 
                 lower_dictionary[year + ' total'] = total
 
             except TypeError:
-                lower_dictionary[year + ' total'] = 0
+                lower_dictionary[year + ' total'] = None
 
         upper_dictionary[project_name] = lower_dictionary
 
