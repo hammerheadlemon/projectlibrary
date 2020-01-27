@@ -631,7 +631,7 @@ def calculate_group_project_total(project_name_list, master_data, project_name_n
             for project_name in project_list:
                 try:
                     total = total + master_data[project_name][year + cost]
-                except TypeError:
+                except (KeyError, TypeError):
                     total = total + 0
 
             output[year + cost] = total
