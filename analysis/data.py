@@ -127,7 +127,7 @@ wrlth = 'Western Rail Link to Heathrow'
 
 '''list of projects to exclude from counting of totals in portfolio financial profile'''
 dont_double_count = [hs2_2b, hs2_2a, hs2_1, em_franchise, west_coast_partnership, northern_powerhouse,
-                     east_coast_digital]
+                     east_coast_digital, heathrow_expansion]
 
 '''highlight cells that contain RAG text, with background and text the same colour'''
 
