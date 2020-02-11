@@ -883,3 +883,26 @@ def master_baseline_index(project_list, masters_list, baselines_list):
         output[project_name] = master_q_list
 
     return output
+
+def highlight_close_dates_ipdc(concate_calculation):
+    '''
+    function that further converts dates that have been concatenated so it is clearer whether/when the project
+    was last at IPDC
+    :param concate_calculation: a concatenated date. provided by concatenate_dates function
+    :return: relevant text for dashboard
+    '''
+
+    if concate_calculation == '-2 weeks':
+        return 'Last IPDC'
+    if concate_calculation == '2 weeks':
+        return 'Next IPDC'
+    if concate_calculation == 'Today':
+        return 'This IPDC'
+    if concate_calculation == '-2 weeks':
+        return 'Last IPDC'
+    if concate_calculation == '2 weeks':
+        return 'Next IPDC'
+    if concate_calculation == 'Today':
+        return 'This IPDC'
+    else:
+        return concate_calculation
