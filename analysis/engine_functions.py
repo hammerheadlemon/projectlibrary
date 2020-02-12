@@ -32,7 +32,7 @@ last_qrt = project_data_from_master(root_path/'core_data/master_2_2019.xlsx', 2,
 #last_qrt = list_of_masters_all[1]
 
 '''dates for functions. python date format is Year, Month, day'''
-bicc_date = datetime.date(2020, 2, 10)
+bicc_date = datetime.date(2020, 2, 24)
 milestone_analysis_date = datetime.date(2019, 11, 1)
 
 def all_milestone_data_bulk(project_list, master_data):
