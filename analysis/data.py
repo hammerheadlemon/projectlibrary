@@ -68,15 +68,20 @@ latest_income_profiles = get_project_income_profile(latest_quarter_project_names
                                                     income_list, year_list, fin_bc_index, 0)
 last_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
                                                   income_list, year_list, fin_bc_index, 1)
-baseline_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
+baseline_1_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
                                                       income_list, year_list, fin_bc_index, 2)
+baseline_2_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
+                                                      income_list, year_list, fin_bc_index, 3)
+
 
 latest_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
                                                       cost_list, year_list, fin_bc_index, 0)
 last_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
                                                     cost_list, year_list, fin_bc_index, 1)
-baseline_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
+baseline_1_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
                                                         cost_list, year_list, fin_bc_index, 2)
+baseline_2_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
+                                                        cost_list, year_list, fin_bc_index, 3)
 
 
 financial_narrative_keys = ['Project Costs Narrative',   # financial_dca_dashboard
