@@ -686,6 +686,21 @@ def grey_conditional_formatting(ws):
 
     return ws
 
+def conditional_formatting(ws, list_columns, list_conditional_text, list_text_colours, list_background_colours,
+                           row_start, row_end):
+
+    for column in list_columns:
+        for i, txt in enumerate(list_conditional_text):
+            text = list_text_colours[i]
+            fill = list_background_colours[i]
+            dxf = DifferentialStyle(font=text, fill=fill)
+            rule = Rule(type="containsText", operator="containsText", text=txt, dxf=dxf)
+            for_rule_formula = 'NOT(ISERROR(SEARCH("' + txt + '",' + column + '1)))'
+            rule.formula = [for_rule_formula]
+            ws.conditional_formatting.add(column + row_start + ':' + column + row_end, rule)
+
+    return ws
+
 '''old functions not currently in use below here'''
 
 def financial_data(project_list, masters_list, bl_list, cells_to_capture, index):

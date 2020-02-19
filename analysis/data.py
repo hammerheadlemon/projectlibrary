@@ -134,6 +134,7 @@ wrlth = 'Western Rail Link to Heathrow'
 dont_double_count = [hs2_2b, hs2_2a, hs2_1, em_franchise, west_coast_partnership, northern_powerhouse,
                      east_coast_digital, heathrow_expansion]
 
+'''conditional formatting'''
 '''highlight cells that contain RAG text, with background and text the same colour'''
 
 '''store of different colours'''
@@ -156,6 +157,15 @@ txt_colour_list = [ag_text, ar_text, red_text, green_text, amber_text]
 fill_colour_list = [ag_fill, ar_fill, red_fill, green_fill, amber_fill]
 '''list of how rag ratings are shown in document'''
 rag_txt_list = ["A/G", "A/R", "R", "G", "A"]
+
+conditional_text = ['missing data', 'project not reporting']
+'''store of different colours'''
+darkish_grey_text = Font(color="002e4053")
+darkish_grey_fill = PatternFill(bgColor="002e4053")
+light_grey_text = Font(color="0085929e")
+light_grey_fill = PatternFill(bgColor="0085929e")
+text_colours = [darkish_grey_text, light_grey_text]
+background_colours = [darkish_grey_fill, light_grey_fill]
 
 '''
 keeping as colour coding is useful
