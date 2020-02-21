@@ -136,7 +136,12 @@ wrlth = 'Western Rail Link to Heathrow'
 dont_double_count = [hs2_2b, hs2_2a, hs2_1, em_franchise, west_coast_partnership, northern_powerhouse,
                      east_coast_digital, heathrow_expansion]
 
-'''conditional formatting'''
+'''Conditional formatting, cell colouring and text colouring'''
+list_column_ltrs = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+                    'm', 'n', 'o', 'q', 's', 't', 'u', 'w', 'x', 'y', 'z']
+list_of_rag_keys = ['SRO Schedule Confidence', 'Departmental DCA',
+                    'SRO Finance confidence', 'SRO Benefits RAG']
+
 '''highlight cells that contain RAG text, with background and text the same colour'''
 
 '''store of different colours'''
