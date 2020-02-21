@@ -7,6 +7,7 @@ from openpyxl.styles import Font, PatternFill
 import platform, datetime
 from pathlib import Path
 
+'''file path'''
 def _platform_docs_dir() -> Path:
     if platform.system() == "Linux":
         return Path.home() / "Documents" / "analysis_engine"
@@ -17,6 +18,7 @@ def _platform_docs_dir() -> Path:
 
 root_path = _platform_docs_dir()
 
+'''master data'''
 q3_1920 = project_data_from_master(root_path/'core_data/master_3_2019.xlsx', 3, 2019)
 q2_1920 = project_data_from_master(root_path/'core_data/master_2_2019.xlsx', 2, 2019)
 q1_1920 = project_data_from_master(root_path/'core_data/master_1_2019.xlsx', 1, 2019)
