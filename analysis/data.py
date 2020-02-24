@@ -136,22 +136,6 @@ wrlth = 'Western Rail Link to Heathrow'
 dont_double_count = [hs2_2b, hs2_2a, hs2_1, em_franchise, west_coast_partnership, northern_powerhouse,
                      east_coast_digital, heathrow_expansion]
 
-'''Conditional formatting, cell colouring and text colouring'''
-#reference for column names when applying conditional fomatting
-list_column_ltrs = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
-                    'm', 'n', 'o', 'q', 's', 't', 'u', 'w', 'x', 'y', 'z']
-#list of keys that have rag values for conditional formatting.
-list_of_rag_keys = ['SRO Schedule Confidence', 'Departmental DCA',
-                    'SRO Finance confidence', 'SRO Benefits RAG']
-#lists of text and backfround colours and list of values for conditional formating rules.
-rag_txt_colours = [ag_text, ar_text, red_text, green_text, amber_text]
-rag_fill_colours = [ag_fill, ar_fill, red_fill, green_fill, amber_fill]
-rag_txt_list_acroynms = ["A/G", "A/R", "R", "G", "A"]
-rag_txt_list_full = ["Amber/Green", "Amber/Red", "Red", "Green", "Amber"]
-gen_txt_colours = [darkish_grey_text, light_grey_text]
-gen_fill_colours = [darkish_grey_fill, light_grey_fill]
-gen_txt_list = ['missing data', 'project not reporting']
-
 '''Store of different colours'''
 ag_text = Font(color="00a5b700") # text same colour as background
 ag_fill = PatternFill(bgColor="00a5b700")
@@ -171,7 +155,21 @@ darkish_grey_fill = PatternFill(bgColor="002e4053")
 light_grey_text = Font(color="0085929e")
 light_grey_fill = PatternFill(bgColor="0085929e")
 
-
+'''Conditional formatting, cell colouring and text colouring'''
+#reference for column names when applying conditional fomatting
+list_column_ltrs = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+                    'm', 'n', 'o', 'q', 's', 't', 'u', 'w', 'x', 'y', 'z']
+#list of keys that have rag values for conditional formatting.
+list_of_rag_keys = ['SRO Schedule Confidence', 'Departmental DCA',
+                    'SRO Finance confidence', 'SRO Benefits RAG']
+#lists of text and backfround colours and list of values for conditional formating rules.
+rag_txt_colours = [ag_text, ar_text, red_text, green_text, amber_text]
+rag_fill_colours = [ag_fill, ar_fill, red_fill, green_fill, amber_fill]
+rag_txt_list_acroynms = ["A/G", "A/R", "R", "G", "A"]
+rag_txt_list_full = ["Amber/Green", "Amber/Red", "Red", "Green", "Amber"]
+gen_txt_colours = [darkish_grey_text, light_grey_text]
+gen_fill_colours = [darkish_grey_fill, light_grey_fill]
+gen_txt_list = ['missing data', 'project not reporting']
 '''
 keeping as colour coding is useful
 s1 = chart.series[0]
