@@ -2,7 +2,7 @@
 
 from datamaps.api import project_data_from_master
 from analysis.engine_functions import baseline_information_bc, baseline_index,get_project_income_profile, \
-    get_project_cost_profile
+    get_project_cost_profile, get_all_project_names
 from openpyxl.styles import Font, PatternFill
 import platform, datetime
 from pathlib import Path
@@ -41,7 +41,8 @@ list_of_masters_all = [q3_1920, q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_
                        q4_1617, q3_1617]
 
 '''list of project names. useful to have here and import into programme'''
-latest_quarter_project_names = q3_1920.projects
+latest_quarter_project_names = list_of_masters_all[0].projects
+all_project_names = get_all_project_names(list_of_masters_all)
 
 '''dates for functions. python date format is Year, Month, day'''
 bicc_date = datetime.date(2019, 2, 10)
