@@ -155,6 +155,8 @@ darkish_grey_text = Font(color="002e4053")
 darkish_grey_fill = PatternFill(bgColor="002e4053")
 light_grey_text = Font(color="0085929e")
 light_grey_fill = PatternFill(bgColor="0085929e")
+greyblue_text = Font(color="85c1e9")
+greyblue_fill = PatternFill(bgColor="85c1e9")
 
 '''Conditional formatting, cell colouring and text colouring'''
 #reference for column names when applying conditional fomatting
@@ -168,9 +170,9 @@ rag_txt_colours = [ag_text, ar_text, red_text, green_text, amber_text]
 rag_fill_colours = [ag_fill, ar_fill, red_fill, green_fill, amber_fill]
 rag_txt_list_acroynms = ["A/G", "A/R", "R", "G", "A"]
 rag_txt_list_full = ["Amber/Green", "Amber/Red", "Red", "Green", "Amber"]
-gen_txt_colours = [darkish_grey_text, light_grey_text]
-gen_fill_colours = [darkish_grey_fill, light_grey_fill]
-gen_txt_list = ['missing data', 'project not reporting']
+gen_txt_colours = [darkish_grey_text, light_grey_text, greyblue_text]
+gen_fill_colours = [darkish_grey_fill, light_grey_fill, greyblue_fill]
+gen_txt_list = ['md', 'pnr', 'knc']
 '''
 keeping as colour coding is useful
 s1 = chart.series[0]
