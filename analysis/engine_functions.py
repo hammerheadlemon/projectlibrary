@@ -465,10 +465,10 @@ def baseline_information_bc(project_list, masters_list):
         lower_list = []
         for i, master in enumerate(masters_list):
             if project_name in master.projects:
-                approved_bc = master.data[project_name]['BICC approval point']
+                approved_bc = master.data[project_name]['IPDC approval point']
                 quarter = master.data[project_name]['Reporting period (GMPP - Snapshot Date)']
                 try:
-                    previous_approved_bc = masters_list[i+1].data[project_name]['BICC approval point']
+                    previous_approved_bc = masters_list[i+1].data[project_name]['IPDC approval point']
                     if approved_bc != previous_approved_bc:
                         lower_list.append((approved_bc, quarter, i))
                 except IndexError:

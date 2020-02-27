@@ -56,10 +56,6 @@ bc_index = baseline_index(baseline_bc_stamp)
 fin_baseline_bcs = baseline_information_bc(latest_quarter_project_names, financial_analysis_masters_list)
 fin_bc_index = baseline_index(fin_baseline_bcs)
 
-'''for highlight text'''
-red_text = Font(color="FF0000")
-salmon_fill = PatternFill(start_color='ff8080', end_color='ff8080', fill_type='solid')
-
 '''lists and keys for running programmes'''
 income_list = [' Forecast - Income both Revenue and Capital']
 cost_list = [' RDEL Forecast Total', ' CDEL Forecast Total', ' Forecast Non-Gov']
@@ -150,6 +146,7 @@ amber_text = Font(color="00fce553") # text same colour as background
 amber_fill = PatternFill(bgColor="00fce553")
 
 black_text = Font(color="00000000")
+red_text = Font(color="FF0000")
 
 darkish_grey_text = Font(color="002e4053")
 darkish_grey_fill = PatternFill(bgColor="002e4053")
@@ -157,6 +154,8 @@ light_grey_text = Font(color="0085929e")
 light_grey_fill = PatternFill(bgColor="0085929e")
 greyblue_text = Font(color="85c1e9")
 greyblue_fill = PatternFill(bgColor="85c1e9")
+
+salmon_fill = PatternFill(bgColor='ff8080')
 
 '''Conditional formatting, cell colouring and text colouring'''
 #reference for column names when applying conditional fomatting
