@@ -12,7 +12,6 @@ import datetime
 from openpyxl.styles import Font, PatternFill
 from openpyxl.styles.differential import DifferentialStyle
 from openpyxl.formatting import Rule
-from analysis.data import list_of_masters_all
 from datamaps.api import project_data_from_master
 
 '''temp hack here, which is required as can't seem to import from data file. '''
