@@ -12,7 +12,7 @@ import datetime
 from openpyxl.styles import Font, PatternFill
 from openpyxl.styles.differential import DifferentialStyle
 from openpyxl.formatting import Rule
-#from analysis.data import list_of_masters_all, bicc_date, milestone_analysis_date
+from analysis.data import list_of_masters_all
 from datamaps.api import project_data_from_master
 
 '''temp hack here, which is required as can't seem to import from data file. '''
@@ -524,6 +524,7 @@ def baseline_index(baseline_data):
             lower_list = [0, 1]
             for tuple_info in baseline_data[project_name]:
                 lower_list.append(tuple_info[2])
+        #elif project_name
         else:
             lower_list = [0, None, 0]  # this is to handle new projects that have only one quarters reporting
 

@@ -50,10 +50,10 @@ milestone_analysis_date = datetime.date(2019, 11, 1)
 
 '''baselining information'''
 # general baseline information
-baseline_bc_stamp = baseline_information_bc(latest_quarter_project_names, list_of_masters_all)
+baseline_bc_stamp = baseline_information_bc(all_project_names, list_of_masters_all)
 bc_index = baseline_index(baseline_bc_stamp)
 # finance baseline information
-fin_baseline_bcs = baseline_information_bc(latest_quarter_project_names, financial_analysis_masters_list)
+fin_baseline_bcs = baseline_information_bc(all_project_names, financial_analysis_masters_list)
 fin_bc_index = baseline_index(fin_baseline_bcs)
 
 '''lists and keys for running programmes'''
