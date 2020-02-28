@@ -509,23 +509,35 @@ def baseline_information(project_list, masters_list, data_baseline):
 
     return output
 
-def baseline_index(baseline_data):
+def baseline_index(baseline_data, master_list):
     '''
     Function that calculates the index list for baseline data
     :param baseline_data: output created by either baseline_information or baseline_information_bc functions
     :return: python dictionary in format 'project name':[index list]
     '''
 
+    left_lst_qrt = [x for x in master_list[1].projects if x not in master_list[0].projects]
+    new_this_qrt = [x for x in master_list[0].projects if x not in master_list[1].projects]
+
     output = {}
 
     for project_name in baseline_data:
-        if project_name in last_qrt.projects:
-            lower_list = [0, 1]
-            for tuple_info in baseline_data[project_name]:
-                lower_list.append(tuple_info[2])
-        #elif project_name
+        if project_name in master_list[0].projects:
+            if project_name in new_this_qrt:
+                lower_list = [0, None, 0]  # this is to handle new projects that have only one quarters reporting
+            else:
+                lower_list = [0, 1]
+                for tuple_info in baseline_data[project_name]:
+                    lower_list.append(tuple_info[2])
         else:
-            lower_list = [0, None, 0]  # this is to handle new projects that have only one quarters reporting
+            if project_name in left_lst_qrt:
+                lower_list = [None, 1]
+                for tuple_info in baseline_data[project_name]:
+                    lower_list.append(tuple_info[2])
+            else:
+                lower_list = [None, None]
+                for tuple_info in baseline_data[project_name]:
+                    lower_list.append(tuple_info[2])
 
         output[project_name] = lower_list
 
