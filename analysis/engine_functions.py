@@ -155,7 +155,7 @@ def ap_p_milestone_data_bulk(project_list, master_data):
 
         upper_dictionary[name] = lower_dictionary
 
-    return upper_dictionary
+    return upper_dictionarygi
 
 def assurance_milestone_data_bulk(project_list, master_data):
     """Function to filter out assurance milestone data"""

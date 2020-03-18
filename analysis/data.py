@@ -19,6 +19,7 @@ def _platform_docs_dir() -> Path:
 root_path = _platform_docs_dir()
 
 '''master data'''
+q4_1920 = project_data_from_master(root_path/'core_data/master_4_2019.xlsx', 4, 2019)
 q3_1920 = project_data_from_master(root_path/'core_data/master_3_2019.xlsx', 3, 2019)
 q2_1920 = project_data_from_master(root_path/'core_data/master_2_2019.xlsx', 2, 2019)
 q1_1920 = project_data_from_master(root_path/'core_data/master_1_2019.xlsx', 1, 2019)
@@ -36,9 +37,24 @@ q3_1617 = project_data_from_master(root_path/'core_data/master_3_2016.xlsx', 3, 
 """list of dictionaries"""
 one_quarter_master_list = []
 bespoke_group_masters_list = []
-financial_analysis_masters_list = [q3_1920, q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819]
-list_of_masters_all = [q3_1920, q2_1920, q1_1920, q4_1819, q3_1819, q2_1819, q1_1819, q4_1718, q3_1718, q2_1718, q1_1718,
-                       q4_1617, q3_1617]
+
+list_of_masters_all = [q4_1920,
+                       q3_1920,
+                       q2_1920,
+                       q1_1920,
+                       q4_1819,
+                       q3_1819,
+                       q2_1819,
+                       q1_1819,
+                       q4_1718,
+                       q3_1718,
+                       q2_1718,
+                       q1_1718,
+                       q4_1617,
+                       q3_1617]
+
+# financial bls only go back to q1_1819
+financial_analysis_masters_list = list_of_masters_all[0:7]
 
 '''list of project names. useful to have here and import into programme'''
 latest_quarter_project_names = list_of_masters_all[0].projects
