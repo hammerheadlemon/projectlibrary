@@ -57,12 +57,11 @@ list_of_masters_all = [q4_1920,
 financial_analysis_masters_list = list_of_masters_all[0:7]
 
 '''list of project names. useful to have here and import into programme'''
-latest_quarter_project_names = list_of_masters_all[0].projects
 all_project_names = get_all_project_names(list_of_masters_all)
 
 '''dates for functions. python date format is Year, Month, day'''
-bicc_date = datetime.date(2019, 2, 10)
-milestone_analysis_date = datetime.date(2019, 11, 1)
+bicc_date = datetime.date(2020, 4, 5)
+milestone_analysis_date = datetime.date(2020, 1, 1)
 
 '''baselining information'''
 # general baseline information
@@ -78,24 +77,25 @@ cost_list = [' RDEL Forecast Total', ' CDEL Forecast Total', ' Forecast Non-Gov'
 year_list = ['19-20', '20-21', '21-22', '22-23', '23-24', '24-25', '25-26', '26-27', '27-28', '28-29', 'Unprofiled']
 wlc_key = 'Total Forecast'
 
+
 '''Financial information'''
-latest_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
+latest_income_profiles = get_project_income_profile(list_of_masters_all[0].projects, financial_analysis_masters_list,
                                                     income_list, year_list, fin_bc_index, 0)
-last_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
+last_income_profiles = get_project_income_profile(list_of_masters_all[0].projects, financial_analysis_masters_list,
                                                   income_list, year_list, fin_bc_index, 1)
-baseline_1_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
+baseline_1_income_profiles = get_project_income_profile(list_of_masters_all[0].projects, financial_analysis_masters_list,
                                                       income_list, year_list, fin_bc_index, 2)
-baseline_2_income_profiles = get_project_income_profile(latest_quarter_project_names, financial_analysis_masters_list,
+baseline_2_income_profiles = get_project_income_profile(list_of_masters_all[0].projects, financial_analysis_masters_list,
                                                       income_list, year_list, fin_bc_index, 3)
 
 
-latest_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
+latest_cost_profiles = get_project_cost_profile(list_of_masters_all[0].projects, financial_analysis_masters_list,
                                                       cost_list, year_list, fin_bc_index, 0)
-last_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
+last_cost_profiles = get_project_cost_profile(list_of_masters_all[0].projects, financial_analysis_masters_list,
                                                     cost_list, year_list, fin_bc_index, 1)
-baseline_1_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
+baseline_1_cost_profiles = get_project_cost_profile(list_of_masters_all[0].projects, financial_analysis_masters_list,
                                                         cost_list, year_list, fin_bc_index, 2)
-baseline_2_cost_profiles = get_project_cost_profile(latest_quarter_project_names, financial_analysis_masters_list,
+baseline_2_cost_profiles = get_project_cost_profile(list_of_masters_all[0].projects, financial_analysis_masters_list,
                                                         cost_list, year_list, fin_bc_index, 3)
 
 
