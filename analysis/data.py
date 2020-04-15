@@ -171,7 +171,9 @@ light_grey_fill = PatternFill(bgColor="0085929e")
 greyblue_text = Font(color="85c1e9")
 greyblue_fill = PatternFill(bgColor="85c1e9")
 
-salmon_fill = PatternFill(bgColor='ff8080')
+salmon_fill = PatternFill(start_color='FFFF8080',
+                   end_color='FFFF8080',
+                   fill_type='solid')
 
 '''Conditional formatting, cell colouring and text colouring'''
 #reference for column names when applying conditional fomatting
