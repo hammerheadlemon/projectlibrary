@@ -146,8 +146,7 @@ tru = 'Transpennine Route Upgrade (TRU)'
 wrlth = 'Western Rail Link to Heathrow'
 
 '''list of projects to exclude from counting of totals in portfolio financial profile'''
-dont_double_count = [hs2_2b, hs2_2a, hs2_1, em_franchise, west_coast_partnership, northern_powerhouse,
-                     east_coast_digital, heathrow_expansion]
+dont_double_count = [hs2_programme, northern_powerhouse, east_coast_digital, heathrow_expansion]
 
 '''Store of different colours'''
 ag_text = Font(color="00a5b700") # text same colour as background
