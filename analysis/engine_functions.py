@@ -14,6 +14,7 @@ from openpyxl.styles.differential import DifferentialStyle
 from openpyxl.formatting import Rule
 from datamaps.api import project_data_from_master
 import difflib
+from docx.shared import RGBColor
 
 '''temp hack here, which is required as can't seem to import from data file. '''
 import platform
@@ -156,7 +157,7 @@ def ap_p_milestone_data_bulk(project_list, master_data):
 
         upper_dictionary[name] = lower_dictionary
 
-    return upper_dictionarygi
+    return upper_dictionary
 
 def assurance_milestone_data_bulk(project_list, master_data):
     """Function to filter out assurance milestone data"""
@@ -657,25 +658,6 @@ def calculate_group_project_total(project_name_list, master_data, project_name_n
 
     return output
 
-def conditional_formatting(ws):
-    '''
-    function applies conditional formatting for RAG colors... in development.
-    :param ws: worksheet
-    :return: worksheet with conditional formatting
-    '''
-
-    for column in ws.max_column:
-        for i, dca in enumerate(rag_txt_list):
-            text = black_text
-            fill = fill_colour_list[i]
-            dxf = DifferentialStyle(font=text, fill=fill)
-            rule = Rule(type="containsText", operator="containsText", text=dca, dxf=dxf)
-            for_rule_formula = 'NOT(ISERROR(SEARCH("' + dca + '",' + column + '5)))'
-            rule.formula = [for_rule_formula]
-            ws.conditional_formatting.add('' + column + '5:' + column + '60', rule)
-
-    return ws
-
 def grey_conditional_formatting(ws):
     '''
     function applies grey conditional formatting for 'Not Reporting'.
@@ -879,7 +861,6 @@ def calculate_income_totals(project_name, financial_data):
 
     return income_list
 
-
 def bc_ref_stages(project_list, masters_list):
     """
     NOLONGER IN USE. STORED FOR NOW.
@@ -939,7 +920,6 @@ def bc_ref_stages(project_list, masters_list):
 
     return output
 
-
 def master_baseline_index(project_list, masters_list, baselines_list):
     """
     NOLONGER IN USE. STORED FOR NOW.
@@ -995,3 +975,22 @@ def highlight_close_dates_ipdc(concate_calculation):
         return 'This IPDC'
     else:
         return concate_calculation
+
+def conditional_formatting_old(ws):
+    '''
+    function applies conditional formatting for RAG colors... in development.
+    :param ws: worksheet
+    :return: worksheet with conditional formatting
+    '''
+
+    for column in ws.max_column:
+        for i, dca in enumerate(rag_txt_list):
+            text = black_text
+            fill = fill_colour_list[i]
+            dxf = DifferentialStyle(font=text, fill=fill)
+            rule = Rule(type="containsText", operator="containsText", text=dca, dxf=dxf)
+            for_rule_formula = 'NOT(ISERROR(SEARCH("' + dca + '",' + column + '5)))'
+            rule.formula = [for_rule_formula]
+            ws.conditional_formatting.add('' + column + '5:' + column + '60', rule)
+
+    return ws
