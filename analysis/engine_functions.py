@@ -13,6 +13,7 @@ from openpyxl.styles import Font, PatternFill
 from openpyxl.styles.differential import DifferentialStyle
 from openpyxl.formatting import Rule
 from datamaps.api import project_data_from_master
+import difflib
 
 '''temp hack here, which is required as can't seem to import from data file. '''
 import platform
@@ -31,7 +32,7 @@ last_qrt = project_data_from_master(root_path/'core_data/master_2_2019.xlsx', 2,
 #last_qrt = list_of_masters_all[1]
 
 '''dates for functions. python date format is Year, Month, day'''
-bicc_date = datetime.date(2020, 2, 24)
+bicc_date = datetime.date(2020, 5, 4)
 milestone_analysis_date = datetime.date(2019, 11, 1)
 
 def all_milestone_data_bulk(project_list, master_data):
@@ -712,6 +713,61 @@ def conditional_formatting(ws, list_columns, list_conditional_text, list_text_co
             ws.conditional_formatting.add(column + row_start + ':' + column + row_end, rule)
 
     return ws
+
+def compare_text_newandold(text_1, text_2, doc):
+    '''
+    function that places text into doc highlighting new and old text
+    text_1: latest text. string.
+    text_2: last text. string
+    doc: word doc
+    '''
+
+    comp = difflib.Differ()
+    diff = list(comp.compare(text_2.split(), text_1.split()))
+    new_text = diff
+    y = doc.add_paragraph()
+
+    for i in range(0, len(diff)):
+        f = len(diff) - 1
+        if i < f:
+            a = i - 1
+        else:
+            a = i
+
+        if diff[i][0:3] == '  |':
+            j = i + 1
+            if diff[i][0:3] and diff[a][0:3] == '  |':
+                y = doc.add_paragraph()
+            else:
+                pass
+        elif diff[i][0:3] == '+ |':
+            if diff[i][0:3] and diff[a][0:3] == '+ |':
+                y = doc.add_paragraph()
+            else:
+                pass
+        elif diff[i][0:3] == '- |':
+            pass
+        elif diff[i][0:3] == '  -':
+            y = doc.add_paragraph()
+            g = diff[i][2]
+            y.add_run(g)
+        elif diff[i][0:3] == '  •':
+            y = doc.add_paragraph()
+            g = diff[i][2]
+            y.add_run(g)
+        elif diff[i][0] == '+':
+            w = len(diff[i])
+            g = diff[i][1:w]
+            y.add_run(g).font.color.rgb = RGBColor(255, 0, 0)
+        elif diff[i][0] == '-':
+            pass
+        elif diff[i][0] == '?':
+            pass
+        else:
+            if diff[i] != '+ |':
+                y.add_run(diff[i][1:])
+
+    return doc
 
 '''old functions not currently in use below here'''
 
