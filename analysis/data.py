@@ -54,7 +54,7 @@ list_of_masters_all = [q4_1920,
                        q3_1617]
 
 # financial bls only go back to q1_1819
-financial_analysis_masters_list = list_of_masters_all[0:7]
+financial_analysis_masters_list = list_of_masters_all[0:8]
 
 '''list of project names. useful to have here and import into programme'''
 all_project_names = get_all_project_names(list_of_masters_all)
