@@ -1,8 +1,8 @@
 """place for storing all master templates"""
 
 from datamaps.api import project_data_from_master
-from analysis.engine_functions import baseline_information_bc, baseline_index,get_project_income_profile, \
-    get_project_cost_profile, get_all_project_names
+from analysis.engine_functions import baseline_information_bc, baseline_index, get_project_income_profile, \
+    get_project_cost_profile, get_all_project_names, baseline_information
 from openpyxl.styles import Font, PatternFill
 import platform, datetime
 from pathlib import Path
@@ -70,6 +70,9 @@ bc_index = baseline_index(baseline_bc_stamp, list_of_masters_all)
 # finance baseline information
 fin_baseline_bcs = baseline_information_bc(all_project_names, financial_analysis_masters_list)
 fin_bc_index = baseline_index(fin_baseline_bcs, list_of_masters_all)
+
+ipdc_milestone_bl_stamp = baseline_information(all_project_names, list_of_masters_all, 'IPDC milestones')
+ipdc_milestone_bl_index = baseline_index(ipdc_milestone_bl_stamp, list_of_masters_all)
 
 '''lists and keys for running programmes'''
 income_list = [' Forecast - Income both Revenue and Capital']
