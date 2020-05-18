@@ -210,3 +210,72 @@ s8.graphicalProperties.line.solidFill = "29ab87" #dark green
 s9 = chart.series[8]
 s9.graphicalProperties.line.solidFill = "691c1c" #dark red
 '''
+
+'''lists with groups of useful keys for data querying'''
+
+stakeholders = ['SRO Full Name',
+                 'SRO Email',
+                 'SRO Phone No.',
+                 'PD Full Name',
+                 'PD Email',
+                 'PD Phone No.',
+                 'Working Contact Name',
+                 'Working Contact Email',
+                 'Working Contact Telephone']
+
+vfm = ['IPDC approval point',
+                 'Total Forecast',
+                 'VfM Category single entry',
+                 'VfM Category lower range',
+                 'VfM Category upper range',
+                 'Present Value Cost (PVC)',
+                 'Present Value Benefit (PVB)',
+                 'Initial Benefits Cost Ratio (BCR)',
+                 'Adjusted Benefits Cost Ratio (BCR)',
+                 'Start of Construction/build',
+                 'Start of Operation',
+                 'Full Operations',
+                 'Project End Date']
+
+vfm_list_two = ['Departmental DCA',
+                     'Working Contact Name',
+                     'Working Contact Email',
+                     'Brief project description (GMPP - brief descripton)',
+                     'Business Case & Version No.',
+                     'BICC approval point',
+                     'NPV for all projects and NPV for programmes if available',
+                     'Initial Benefits Cost Ratio (BCR)',
+                     'Adjusted Benefits Cost Ratio (BCR)',
+                     'VfM Category single entry',
+                     'VfM Category lower range',
+                     'VfM Category upper range',
+                     'Present Value Cost (PVC)',
+                     'Present Value Benefit (PVB)',
+                     'SRO Benefits RAG',
+                     'Benefits Narrative',
+                     'Ben comparison with last quarters cost - narrative']
+
+ipa_ar_fields_1920 =  ['Department',
+                       '19-20 RDEL BL Total',
+                       '19-20 CDEL BL WLC',
+                       '19-20 RDEL Forecast Total',
+                       '19-20 CDEL Forecast Total WLC',
+                       'Total BL',
+                       'GMPP - IPA ID Number']
+
+project_basics = ['Brief project description (GMPP - brief descripton)',
+                  'Delivery Narrative']
+
+milestones = ['SOBC - IPDC Appoval',
+              'OBC - IPDC Approval',
+              'FBC - IPDC Approval',
+              'Start of Operation',
+              'Full Operations',
+              'Project End Date']
+
+rags = ['SRO Benefits RAG',
+        'GMPP - IPA DCA']
+
+costs = ['Total Forecast']
+
+baselines = ['IPDC approval point']
