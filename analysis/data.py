@@ -148,6 +148,10 @@ thameslink = 'Thameslink Programme'
 tru = 'Transpennine Route Upgrade (TRU)'
 wrlth = 'Western Rail Link to Heathrow'
 
+'''project groups'''
+
+hsmrpg = [hs2_1, hs2_2a, hs2_2b, hexagon, northern_powerhouse, ewr_western, ewr_central]
+
 '''list of projects to exclude from counting of totals in portfolio financial profile'''
 dont_double_count = [hs2_programme, northern_powerhouse, east_coast_digital, heathrow_expansion]
 
