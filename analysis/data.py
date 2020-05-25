@@ -273,7 +273,7 @@ ipa_ar_fields_1920 =  ['Department',
 project_basics = ['Brief project description (GMPP - brief descripton)',
                   'Delivery Narrative']
 
-milestones = ['SOBC - IPDC Appoval',
+milestones = ['SOBC - IPDC Approval',
               'OBC - IPDC Approval',
               'FBC - IPDC Approval',
               'Start of Operation',
