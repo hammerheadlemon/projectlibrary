@@ -187,7 +187,9 @@ list_column_ltrs = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
                     'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 #list of keys that have rag values for conditional formatting.
 list_of_rag_keys = ['SRO Schedule Confidence', 'Departmental DCA',
-                    'SRO Finance confidence', 'SRO Benefits RAG']
+                    'SRO Finance confidence', 'SRO Benefits RAG',
+                    'GMPP - IPA DCA']
+
 #lists of text and backfround colours and list of values for conditional formating rules.
 rag_txt_colours = [ag_text, ar_text, red_text, green_text, amber_text]
 rag_fill_colours = [ag_fill, ar_fill, red_fill, green_fill, amber_fill]
