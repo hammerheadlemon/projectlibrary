@@ -36,6 +36,68 @@ from docx.shared import RGBColor
 bicc_date = datetime.date(2020, 5, 4)
 milestone_analysis_date = datetime.date(2019, 11, 1)
 
+def all_milestones_dict(project_names, master_data):
+    '''
+    Function that puts project milestone data in dictionary in order of newest date first.
+
+    Project_names: list of project names of interest / in range
+    Master_data: quarter master data set
+
+    Dictionary is structured as {'project name': {'milestone name': datetime.date: 'notes'}}
+
+    '''
+
+    upper_dict = {}
+
+    for name in project_names:
+        lower_dict = {}
+        try:
+            p_data = master_data.data[name]
+            raw_list = []
+            for i in range(1, 50):
+                try:
+                    try:
+                        t = (p_data['Approval MM' + str(i)],
+                             p_data['Approval MM' + str(i) + ' Forecast / Actual'],
+                             p_data['Approval MM' + str(i) + ' Notes'])
+                        raw_list.append(t)
+                    except KeyError:
+                        t = (p_data['Approval MM' + str(i)],
+                             p_data['Approval MM' + str(i) + ' Forecast - Actual'],
+                             p_data['Approval MM' + str(i) + ' Notes'])
+                        raw_list.append(t)
+
+                    t = (p_data['Assurance MM' + str(i)],
+                         p_data['Assurance MM' + str(i) + ' Forecast - Actual'],
+                         p_data['Assurance MM' + str(i) + ' Notes'])
+                    raw_list.append(t)
+
+                except KeyError:
+                    pass
+
+            for i in range(18, 67):
+                try:
+                    t = (p_data['Project MM' + str(i)],
+                         p_data['Project MM' + str(i) + ' Forecast - Actual'],
+                         p_data['Project MM' + str(i) + ' Notes'])
+                    raw_list.append(t)
+                except KeyError:
+                    pass
+        except KeyError:
+            pass
+
+        sorted_list = sorted(raw_list, key=lambda k: (k[1] is None, k[1]))
+
+        for x in sorted_list:
+            if x[0] is not None:
+                lower_dict[x[0]] = {x[1]: x[2]}
+            else:
+                pass
+
+        upper_dict[name] = lower_dict
+
+    return upper_dict
+
 def all_milestone_data_bulk(project_list, master_data):
     '''
     function that filters all milestone data and returns it in dictionary format.
